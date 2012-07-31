@@ -1,0 +1,170 @@
+HDF5 "simpleexamplefile.h5" {
+GROUP "/" {
+   ATTRIBUTE "file_name" {
+      DATATYPE  H5T_STRING {
+            STRSIZE 20;
+            STRPAD H5T_STR_NULLPAD;
+            CSET H5T_CSET_ASCII;
+            CTYPE H5T_C_S1;
+         }
+      DATASPACE  SCALAR
+      DATA {
+      (0): "simpleexamplefile.h5"
+      }
+   }
+   ATTRIBUTE "file_time" {
+      DATATYPE  H5T_STRING {
+            STRSIZE 24;
+            STRPAD H5T_STR_NULLPAD;
+            CSET H5T_CSET_ASCII;
+            CTYPE H5T_C_S1;
+         }
+      DATASPACE  SCALAR
+      DATA {
+      (0): "2009-09-09T09:09:09-0000"
+      }
+   }
+   ATTRIBUTE "producer" {
+      DATATYPE  H5T_STRING {
+            STRSIZE 6;
+            STRPAD H5T_STR_NULLPAD;
+            CSET H5T_CSET_ASCII;
+            CTYPE H5T_C_S1;
+         }
+      DATASPACE  SCALAR
+      DATA {
+      (0): "canSAS"
+      }
+   }
+   GROUP "sasentry01" {
+      ATTRIBUTE "NX_class" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 8;
+               STRPAD H5T_STR_NULLPAD;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }
+         DATASPACE  SCALAR
+         DATA {
+         (0): "SASentry"
+         }
+      }
+      ATTRIBUTE "version" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 3;
+               STRPAD H5T_STR_NULLPAD;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }
+         DATASPACE  SCALAR
+         DATA {
+         (0): "1.0"
+         }
+      }
+      GROUP "sasdata01" {
+         ATTRIBUTE "I_axes" {
+            DATATYPE  H5T_STRING {
+                  STRSIZE 1;
+                  STRPAD H5T_STR_NULLPAD;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
+            DATASPACE  SCALAR
+            DATA {
+            (0): "Q"
+            }
+         }
+         ATTRIBUTE "NX_class" {
+            DATATYPE  H5T_STRING {
+                  STRSIZE 7;
+                  STRPAD H5T_STR_NULLPAD;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
+            DATASPACE  SCALAR
+            DATA {
+            (0): "SASdata"
+            }
+         }
+         ATTRIBUTE "Q_indices" {
+            DATATYPE  H5T_STD_I64LE
+            DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
+            DATA {
+            (0): 0
+            }
+         }
+         DATASET "I" {
+            DATATYPE  H5T_IEEE_F64LE
+            DATASPACE  SIMPLE { ( 100 ) / ( 100 ) }
+            DATA {
+            (0): 0.0838046, 0.238117, 0.21721, 0.275269, 0.00353812,
+            (5): 0.210151, 0.264895, 0.199982, 0.566231, 0.667633, 0.407365,
+            (11): 0.843817, 0.855146, 0.661252, 0.757594, 0.514577, 0.505234,
+            (17): 0.69918, 0.437121, 0.401917, 0.781094, 0.0337962, 0.574272,
+            (23): 0.811965, 0.981749, 0.948809, 0.0977054, 0.426219,
+            (28): 0.960228, 0.491124, 0.776471, 0.671514, 0.710687, 0.481223,
+            (34): 0.791772, 0.733618, 0.181268, 0.461774, 0.172213, 0.925904,
+            (40): 0.478812, 0.606217, 0.998668, 0.596584, 0.330011, 0.506126,
+            (46): 0.774292, 0.490832, 0.710597, 0.891836, 0.878182, 0.135016,
+            (52): 0.36677, 0.0238669, 0.233376, 0.602672, 0.553664, 0.991826,
+            (58): 0.226693, 0.839231, 0.132571, 0.752626, 0.44604, 0.0257147,
+            (64): 0.119803, 0.152583, 0.620311, 0.116963, 0.549746, 0.168115,
+            (70): 0.66538, 0.875996, 0.698449, 0.497456, 0.638407, 0.183233,
+            (76): 0.720893, 0.868226, 0.865825, 0.727304, 0.406108, 0.346327,
+            (82): 0.530368, 0.060292, 0.830603, 0.474702, 0.431968, 0.269392,
+            (88): 0.460934, 0.789091, 0.820586, 0.752046, 0.54256, 0.441164,
+            (94): 0.11939, 0.485721, 0.987161, 0.0977314, 0.204476, 0.108944
+            }
+            ATTRIBUTE "units" {
+               DATATYPE  H5T_STRING {
+                     STRSIZE 4;
+                     STRPAD H5T_STR_NULLPAD;
+                     CSET H5T_CSET_ASCII;
+                     CTYPE H5T_C_S1;
+                  }
+               DATASPACE  SCALAR
+               DATA {
+               (0): "1/cm"
+               }
+            }
+         }
+         DATASET "Q" {
+            DATATYPE  H5T_IEEE_F64LE
+            DATASPACE  SIMPLE { ( 100 ) / ( 100 ) }
+            DATA {
+            (0): 0.416259, 0.825714, 0.695231, 0.830528, 0.735557, 0.0215171,
+            (6): 0.162942, 0.66632, 0.263023, 0.890253, 0.198885, 0.629213,
+            (12): 0.89384, 0.203922, 0.781668, 0.699669, 0.441395, 0.20435,
+            (18): 0.0816729, 0.573322, 0.142538, 0.910072, 0.419164,
+            (23): 0.386785, 0.220866, 0.235136, 0.632626, 0.403121, 0.37102,
+            (29): 0.498989, 0.229921, 0.396464, 0.354163, 0.643638, 0.698357,
+            (35): 0.810258, 0.096838, 0.0412923, 0.648702, 0.188484,
+            (40): 0.195228, 0.743328, 0.0207431, 0.157274, 0.516934,
+            (45): 0.379793, 0.92704, 0.160989, 0.530262, 0.732267, 0.511875,
+            (51): 0.739773, 0.0488758, 0.161141, 0.775933, 0.868942,
+            (56): 0.0153876, 0.616104, 0.377755, 0.493365, 0.067325, 0.48844,
+            (62): 0.840676, 0.334006, 0.358945, 0.153084, 0.589396,
+            (67): 0.0679859, 0.116931, 0.695957, 0.229256, 0.759817,
+            (72): 0.315472, 0.425769, 0.580404, 0.559352, 0.256826, 0.033524,
+            (78): 0.771299, 0.438899, 0.772964, 0.773538, 0.435583, 0.905752,
+            (84): 0.147211, 0.695758, 0.134145, 0.61346, 0.91027, 0.894374,
+            (90): 0.12095, 0.702991, 0.796583, 0.590847, 0.849221, 0.0147625,
+            (96): 0.666687, 0.667172, 0.564843, 0.176223
+            }
+            ATTRIBUTE "units" {
+               DATATYPE  H5T_STRING {
+                     STRSIZE 3;
+                     STRPAD H5T_STR_NULLPAD;
+                     CSET H5T_CSET_ASCII;
+                     CTYPE H5T_C_S1;
+                  }
+               DATASPACE  SCALAR
+               DATA {
+               (0): "1/A"
+               }
+            }
+         }
+      }
+   }
+}
+}

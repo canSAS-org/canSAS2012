@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SASroot file_name="simpleexamplefile.xml" file_time="2009-09-09T09:09:09-0000" producer="canSAS">
+  <SASentry name="sasentry01" version="1.0">
+    <Title>example of simple 1D SAS data, I(Q)</Title>
+    <SASdata name="sasdata01" I_axes="Q" Q_indices="0"/>
+    <Q size="11" units="1/A">0.60168611 0.01527919 0.83198427 0.68167238 0.96585075 0.20407345 0.42843402 0.41012941 0.06522742 0.56134621 0.86079253</Q>
+    <I size="11" units="1/cm">0.25051372 0.76429341 0.57796837 0.91335506 0.06430863 0.05072068 0.63891433 0.45161783 0.79611969 0.88871497 0.08670578</I>
+  </SASentry>
+</SASroot>

@@ -4,15 +4,15 @@
 SASroot
 	SASentry
 		SASdata
-			@Q_indices="*"
-			@I_indices="Q"
+			@Q_indices=0
+			@I_axes="Q"
 			I: float[100*512]
 			Qx: float[100*512]
 			Qy: float[100*512]
 			Qz: float[100*512]
 -->
   <SASentry name="sasentry01">
-    <SASdata name="sasdata01" Q_indices="*" I_indices="Q">
+    <SASdata name="sasdata01" Q_indices="0" I_axes="Q">
 		<I units="1/cm" size="4*7">
 		41.891    40.201    38.805    39.174    37.668    38.389    38.162 
 		36.95     35.963    36.582    37.064    36.647    36.561    35.946 

@@ -4,9 +4,9 @@
 SASroot
 	SASentry
 		SASdata
-			@Q_indices="Time,*,*"
-			@I_indices="Time,Q,Q"
-			@Mask_indices="Time,Q,Q"
+			@Q_indices=1,2
+			@I_axes="Time,Q,Q"
+			@Mask_indices=0,1,2
 			I: float[nTime,100,512]
 			Qx: float[nTime,100,512]
 			Qy: float[nTime,100,512]
@@ -15,7 +15,7 @@ SASroot
 			Mask: int[nTime,100,512]
 -->
   <SASentry name="sasentry01">
-    <SASdata name="sasdata01" Q_indices="Time,*" I_indices="Time,Q">
+    <SASdata name="sasdata01" Q_indices="1,2" I_axes="Time,Q,Q" Mask_indices="0,1,2">
 		<I units="1/cm" size="3,4,7">
 		61.891    40.201    38.805    39.174    37.668    38.389    38.162 
 		36.95     35.963    36.582    37.064    36.647    36.561    35.946 

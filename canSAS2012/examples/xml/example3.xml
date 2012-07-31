@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<SASroot xmlns="cansas/2.0" version="2.0">
+<SASroot file_time="2012-07-31T09:09:09-0000" producer="canSAS">
 <!-- example of generic 1D SAS data in a time series, I(Q(t), t)
 SASroot
 	SASentry

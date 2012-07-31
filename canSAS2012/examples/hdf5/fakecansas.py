@@ -122,8 +122,8 @@ class Generic2DTimeTPSeries(ExampleFile):
 		self.createData("sasdata01", np.array([1,3,4]), "Temperature,Time,Pressure,Q,Q", None, {"Time_indices" : np.array([1]), "Temperature_indices" : np.array([0]), "Pressure_indices" : np.array([2])})
 		self.createDataSet("Q", np.random.rand(7,3,3), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(3,7,2,3,3), {"units": "1/cm"})
-		self.createDataSet("Time", np.random.rand(3,), {"units": "ms"})
-		self.createDataSet("Temperature", np.random.rand(7,), {"units": "ms"})
+		self.createDataSet("Time", np.random.rand(7,), {"units": "ms"})
+		self.createDataSet("Temperature", np.random.rand(3,), {"units": "ms"})
 		self.createDataSet("Pressure", np.random.rand(2,), {"units": "ms"})
 		self.closeFile()
 

@@ -86,11 +86,32 @@ GROUP "/" {
             (0): "SASdata"
             }
          }
+         ATTRIBUTE "Pressure_indices" {
+            DATATYPE  H5T_STD_I64LE
+            DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
+            DATA {
+            (0): 2
+            }
+         }
          ATTRIBUTE "Q_indices" {
             DATATYPE  H5T_STD_I64LE
             DATASPACE  SIMPLE { ( 3 ) / ( 3 ) }
             DATA {
             (0): 1, 3, 4
+            }
+         }
+         ATTRIBUTE "Temperature_indices" {
+            DATATYPE  H5T_STD_I64LE
+            DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
+            DATA {
+            (0): 0
+            }
+         }
+         ATTRIBUTE "Time_indices" {
+            DATATYPE  H5T_STD_I64LE
+            DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
+            DATA {
+            (0): 1
             }
          }
          DATASET "I" {

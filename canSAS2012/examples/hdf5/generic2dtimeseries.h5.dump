@@ -93,6 +93,13 @@ GROUP "/" {
             (0): 0, 1
             }
          }
+         ATTRIBUTE "Time_indices" {
+            DATATYPE  H5T_STD_I64LE
+            DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
+            DATA {
+            (0): 0
+            }
+         }
          DATASET "I" {
             DATATYPE  H5T_IEEE_F64LE
             DATASPACE  SIMPLE { ( 33, 25600 ) / ( 33, 25600 ) }

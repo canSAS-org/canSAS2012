@@ -23,24 +23,26 @@ class ExampleFile:
 		self.f.close()
 
 	def createEntry(self, name):
-		self.nxentry = self.f.create_group(name)
-		self.nxentry.attrs["NX_class"] = "SASentry"
-		self.nxentry.attrs["version"] = "1.0"
+		self.sasentry = self.f.create_group(name)
+		self.sasentry.attrs["NX_class"] = "SASentry"
+		self.sasentry.attrs["version"] = "1.0"
 	
-	def createData(self, name, qi, ii, mi=None):
-		self.nxdata = self.nxentry.create_group(name)
-		self.nxdata.attrs["NX_class"] = "SASdata"
-		self.nxdata.attrs["Q_indices"] = qi
-		self.nxdata.attrs["I_axes"] = ii
+	def createData(self, name, qi, ii, mi=None, attributes=None):
+		self.sasdata = self.sasentry.create_group(name)
+		self.sasdata.attrs["NX_class"] = "SASdata"
+		self.sasdata.attrs["Q_indices"] = qi
+		self.sasdata.attrs["I_axes"] = ii
 		if mi != None:
-			self.nxdata.attrs["Mask_indices"] = mi
+			self.sasdata.attrs["Mask_indices"] = mi
+		if attributes != None:
+			for key in attributes.keys():
+				self.sasdata.attrs[key] = attributes[key]
 
 	def createDataSet(self, name, array, attributes=None):
-		ds = self.nxdata.create_dataset(name, array.shape, data=array)
+		ds = self.sasdata.create_dataset(name, array.shape, data=array)
 		if attributes != None:
 			for key in attributes.keys():
 				ds.attrs[key] = attributes[key]
-		#nxdet.create_dataset("region_of_interest", (4,), dtype=np.dtype("int16"), data=np.array([160,114,907,834]))
 
 class SimpleExampleFile(ExampleFile):
 	def write(self):
@@ -106,7 +108,7 @@ class Generic2DTimeSeries(ExampleFile):
 	def write(self):
 		self.createFile()
 		self.createEntry("sasentry01")
-		self.createData("sasdata01", np.array([0,1]), "Time,Q")
+		self.createData("sasdata01", np.array([0,1]), "Time,Q", None, {"Time_indices" : np.array([0])})
 		self.createDataSet("Q", np.random.rand(33,256*100,), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(33,256*100,), {"units": "1/cm"})
 		self.createDataSet("Time", np.random.rand(33,), {"units": "ms"})
@@ -117,7 +119,7 @@ class Generic2DTimeTPSeries(ExampleFile):
 	def write(self):
 		self.createFile()
 		self.createEntry("sasentry01")
-		self.createData("sasdata01", np.array([1,3,4]), "Temperature,Time,Pressure,Q,Q")
+		self.createData("sasdata01", np.array([1,3,4]), "Temperature,Time,Pressure,Q,Q", None, {"Time_indices" : np.array([1]), "Temperature_indices" : np.array([0]), "Pressure_indices" : np.array([2])})
 		self.createDataSet("Q", np.random.rand(7,3,3), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(3,7,2,3,3), {"units": "1/cm"})
 		self.createDataSet("Time", np.random.rand(3,), {"units": "ms"})

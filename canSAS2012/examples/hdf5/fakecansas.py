@@ -2,6 +2,7 @@ import numpy as np
 import h5py
 import os
 import sys
+import inspect
 import traceback
 
 class ExampleFile:
@@ -30,7 +31,7 @@ class ExampleFile:
 		self.nxdata = self.nxentry.create_group(name)
 		self.nxdata.attrs["NX_class"] = "SASdata"
 		self.nxdata.attrs["Q_indices"] = qi
-		self.nxdata.attrs["I_indices"] = ii
+		self.nxdata.attrs["I_axes"] = ii
 		if mi != None:
 			self.nxdata.attrs["Mask_indices"] = mi
 
@@ -45,26 +46,98 @@ class SimpleExampleFile(ExampleFile):
 	def write(self):
 		self.createFile()
 		self.createEntry("sasentry01")
-		self.createData("sasdata01", "*", "Q")
-		#data = np.genfromtxt("silver.txt", delimiter="	", dtype=np.dtype("int16"))
+		self.createData("sasdata01", np.array([0]), "Q")
 		self.createDataSet("Q", np.random.rand(100,), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(100,), {"units": "1/cm"})
 		self.closeFile()
-
 
 class Simple1DTimeSeries(ExampleFile):
 	def write(self):
 		self.createFile()
 		self.createEntry("sasentry01")
-		self.createData("sasdata01", ",*", "Time,Q")
-		#data = np.genfromtxt("silver.txt", delimiter="	", dtype=np.dtype("int16"))
+		self.createData("sasdata01", np.array([1]), "Time,Q")
 		self.createDataSet("Q", np.random.rand(100,), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(10,100,), {"units": "1/cm"})
 		self.createDataSet("Time", np.random.rand(10,), {"units": "s"})
 		self.closeFile()
 
+class Generic1DTimeSeries(ExampleFile):
+	def write(self):
+		self.createFile()
+		self.createEntry("sasentry01")
+		self.createData("sasdata01", np.array([0,1]), "Time,Q")
+		self.createDataSet("Q", np.random.rand(10,100,), {"units": "1/A"})
+		self.createDataSet("I", np.random.rand(10,100,), {"units": "1/cm"})
+		self.createDataSet("Time", np.random.rand(10,), {"units": "s"})
+		self.closeFile()
+
+class Simple2DCase(ExampleFile):
+	def write(self):
+		self.createFile()
+		self.createEntry("sasentry01")
+		self.createData("sasdata01", np.array([0,1]), "Q,Q")
+		self.createDataSet("Q", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("I", np.random.rand(256,100,), {"units": "1/cm"})
+		self.closeFile()
+
+
+class Simple2DMaskedCase(ExampleFile):
+	def write(self):
+		self.createFile()
+		self.createEntry("sasentry01")
+		self.createData("sasdata01", np.array([0,1]), "Q,Q", np.array([0,1]))
+		self.createDataSet("Q", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("I", np.random.rand(256,100,), {"units": "1/cm"})
+		self.createDataSet("Mask", np.array(np.random.randint(0,1,256*100,).reshape(256,100), dtype=np.dtype("int8")))
+		self.closeFile()
+
+
+class Generic2DCase(ExampleFile):
+	def write(self):
+		self.createFile()
+		self.createEntry("sasentry01")
+		self.createData("sasdata01", np.array([0]), "Q")
+		self.createDataSet("Q", np.random.rand(256*100,), {"units": "1/A"})
+		self.createDataSet("I", np.random.rand(256*100,), {"units": "1/cm"})
+		self.closeFile()
+
+
+class Generic2DTimeSeries(ExampleFile):
+	def write(self):
+		self.createFile()
+		self.createEntry("sasentry01")
+		self.createData("sasdata01", np.array([0,1]), "Time,Q")
+		self.createDataSet("Q", np.random.rand(33,256*100,), {"units": "1/A"})
+		self.createDataSet("I", np.random.rand(33,256*100,), {"units": "1/cm"})
+		self.createDataSet("Time", np.random.rand(33,), {"units": "ms"})
+		self.closeFile()
+
+
+class Generic2DTimeTPSeries(ExampleFile):
+	def write(self):
+		self.createFile()
+		self.createEntry("sasentry01")
+		self.createData("sasdata01", np.array([1,3,4]), "Temperature,Time,Pressure,Q,Q")
+		self.createDataSet("Q", np.random.rand(7,3,3), {"units": "1/A"})
+		self.createDataSet("I", np.random.rand(3,7,2,3,3), {"units": "1/cm"})
+		self.createDataSet("Time", np.random.rand(3,), {"units": "ms"})
+		self.createDataSet("Temperature", np.random.rand(7,), {"units": "ms"})
+		self.createDataSet("Pressure", np.random.rand(2,), {"units": "ms"})
+		self.closeFile()
+
 
 if __name__ == "__main__":
-    SimpleExampleFile("simple.h5").write()
-    Simple1DTimeSeries("simple1DTimeSeries.h5").write()
+    subclasses = []
+    classType=ExampleFile
+    callers_module = sys._getframe(0).f_globals['__name__']
+    classes = inspect.getmembers(sys.modules[callers_module], inspect.isclass)
+    for name, obj in classes:
+        if (obj is not classType) and (classType in inspect.getmro(obj)):
+            subclasses.append((obj, name))
+    for file in subclasses:
+       filename = file[1]+".h5"
+       filename = filename.lower()
+       file[0](filename).write()
+       os.system("h5dump %s > %s.dump" % (filename, filename))
+
 

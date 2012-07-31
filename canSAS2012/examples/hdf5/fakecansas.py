@@ -138,6 +138,6 @@ if __name__ == "__main__":
        filename = file[1]+".h5"
        filename = filename.lower()
        file[0](filename).write()
-       os.system("h5dump %s > %s.dump" % (filename, filename))
+       os.system("h5dump -A %s > %s.dump" % (filename, filename))
 
 

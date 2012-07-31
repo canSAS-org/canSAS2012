@@ -1,0 +1,1 @@
+contributions of reduced data (not in canSAS format)

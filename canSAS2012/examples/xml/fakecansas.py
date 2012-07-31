@@ -2,7 +2,6 @@
 
 # FIXME:  check the order of array indices!
 
-# $Id$
 # see: http://www.smallangles.net/wgwiki/index.php/2012_Data_Discussion_Examples
 
 import inspect
@@ -21,6 +20,7 @@ hh = -time.timezone/60/60
 mm = abs(time.timezone/60) - 60*abs(hh)
 FILE_TIMESTAMP = time.strftime("%Y-%m-%dT%H:%M:%S") + '%+03d%02d' % (hh, mm)
 FILE_PRODUCER = "canSAS"
+SVN_ID = "$Id$".strip('$').strip()
 
 
 class ExampleFile():
@@ -41,6 +41,7 @@ class ExampleFile():
 		self.root.attrib['file_time'] = FILE_TIMESTAMP
 		self.root.attrib['file_name'] = self.filename
 		#self.root.attrib['Python_etree_version'] = etree.__version__
+		self.root.attrib['svn_id'] = SVN_ID
 
 	def closeFile(self):
 		'''write (or overwrite) the named XML file'''

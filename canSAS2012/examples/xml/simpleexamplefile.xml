@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SASroot producer="canSAS" file_time="2012-07-31T17:44:07-0600" file_name="simpleexamplefile.xml">
+<SASroot producer="canSAS" file_time="2012-07-31T17:52:16-0600" file_name="simpleexamplefile.xml" svn_id="Id: fakecansas.py 222 2012-07-31 22:48:04Z prjemian">
   <SASentry name="sasentry01" version="1.0">
     <Title>example of simple 1D SAS data, I(Q)</Title>
     <SASdata name="sasdata01" I_axes="Q" Q_indices="0"/>
-    <Q size="5" units="1/A">0.64588408 0.53024338 0.16268164 0.83180457 0.56957301</Q>
-    <I size="5" units="1/cm">0.1464156 0.39765994 0.19032763 0.23086244 0.09756308</I>
+    <Q size="5" units="1/A">0.05551493 0.43560293 0.93169401 0.79958182 0.98216911</Q>
+    <I size="5" units="1/cm">0.23436064 0.20468628 0.08395084 0.65582253 0.21529222</I>
   </SASentry>
 </SASroot>

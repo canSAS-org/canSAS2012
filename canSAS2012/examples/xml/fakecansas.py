@@ -2,6 +2,9 @@
 
 # FIXME:  check the order of array indices!
 
+# $Id$
+# see: http://www.smallangles.net/wgwiki/index.php/2012_Data_Discussion_Examples
+
 import inspect
 import string
 import time

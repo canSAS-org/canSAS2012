@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SASroot producer="canSAS" file_time="2012-08-01T03:36:03-0600" file_name="simpleexamplefile.xml" svn_id="Id: fakecansas.py 223 2012-07-31 22:52:37Z prjemian">
+<SASroot producer="canSAS" file_time="2012-08-02T12:37:51-0600" file_name="simpleexamplefile.xml" svn_id="Id: fakecansas.py 224 2012-08-01 08:44:47Z prjemian">
   <SASentry name="sasentry01" version="1.0">
     <Title>example of simple 1D SAS data, I(Q)</Title>
     <SASdata name="sasdata01" I_axes="Q" Q_indices="0">
-      <Q size="50000" units="1/A">0.6193149 0.23232947 0.9956927 ..., 0.18964143 0.91185052 0.35223028</Q>
-      <I size="50000" units="1/cm">0.07827479 0.62716881 0.3308346 ..., 0.77483106 0.03450629 0.12221884</I>
+      <Q size="7" units="1/A">0.02990082 0.59002332 0.51975154 0.78746948 0.31180054 0.36602328 0.03877398</Q>
+      <I size="7" units="1/cm">0.60563509 0.89300246 0.73038597 0.6971713 0.84519561 0.98183976 0.74678512</I>
     </SASdata>
   </SASentry>
 </SASroot>

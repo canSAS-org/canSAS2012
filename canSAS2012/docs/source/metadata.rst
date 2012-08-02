@@ -6,8 +6,7 @@
 Metadata of the canSAS2012 data format
 ==================================================
 
-Describe, in general, the examples.  Explain how they were created and 
-what assumptions were involved.
+Describe the metadata.  Show that it was derived from the 1D format.
 
 Contents:
 

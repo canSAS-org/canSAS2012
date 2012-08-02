@@ -2,17 +2,19 @@
 
 .. _contents:
 
-.. rubric:: Contents
+========================
+Contents
+========================
 
 .. toctree::
    :maxdepth: 2
    
-   structure
+   framework
    implementation
    examples
 
 
-.. rubric:: Contents
+.. rubric:: Index
 
 :ref:`genindex`
 

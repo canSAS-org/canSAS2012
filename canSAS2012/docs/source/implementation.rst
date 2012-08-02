@@ -20,3 +20,5 @@ Contents:
    
    xml
    hdf5
+
+.. need to describe the algorithms and software to read this format

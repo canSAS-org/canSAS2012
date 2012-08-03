@@ -37,6 +37,9 @@ class ExampleFile:
 		if attributes != None:
 			for key in attributes.keys():
 				self.sasdata.attrs[key] = attributes[key]
+	
+	def createTitle(self, title):
+		self.sasdata.create_dataset('Title', (), data=title)
 
 	def createDataSet(self, name, array, attributes=None):
 		ds = self.sasdata.create_dataset(name, array.shape, data=array)
@@ -78,7 +81,9 @@ class Simple2DCase(ExampleFile):
 		self.createFile()
 		self.createEntry("sasentry01")
 		self.createData("sasdata01", np.array([0,1]), "Q,Q")
-		self.createDataSet("Q", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("Qx", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("Qy", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("Qz", np.random.rand(256,100,)*0, {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(256,100,), {"units": "1/cm"})
 		self.closeFile()
 
@@ -88,7 +93,9 @@ class Simple2DMaskedCase(ExampleFile):
 		self.createFile()
 		self.createEntry("sasentry01")
 		self.createData("sasdata01", np.array([0,1]), "Q,Q", np.array([0,1]))
-		self.createDataSet("Q", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("Qx", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("Qy", np.random.rand(256,100,), {"units": "1/A"})
+		self.createDataSet("Qz", np.random.rand(256,100,)*0, {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(256,100,), {"units": "1/cm"})
 		self.createDataSet("Mask", np.array(np.random.randint(0,1,256*100,).reshape(256,100), dtype=np.dtype("int8")))
 		self.closeFile()
@@ -99,7 +106,9 @@ class Generic2DCase(ExampleFile):
 		self.createFile()
 		self.createEntry("sasentry01")
 		self.createData("sasdata01", np.array([0]), "Q")
-		self.createDataSet("Q", np.random.rand(256*100,), {"units": "1/A"})
+		self.createDataSet("Qx", np.random.rand(256*100,), {"units": "1/A"})
+		self.createDataSet("Qy", np.random.rand(256*100,), {"units": "1/A"})
+		self.createDataSet("Qz", np.random.rand(256*100,), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(256*100,), {"units": "1/cm"})
 		self.closeFile()
 
@@ -108,11 +117,28 @@ class Generic2DTimeSeries(ExampleFile):
 	def write(self):
 		self.createFile()
 		self.createEntry("sasentry01")
-		self.createData("sasdata01", np.array([0,1]), "Time,Q", None, {"Time_indices" : np.array([0])})
-		self.createDataSet("Q", np.random.rand(33,256*100,), {"units": "1/A"})
+		self.createData("sasdata01", np.array([1]), "Time,Q", None, {"Time_indices" : np.array([0])})
+		self.createDataSet("Qx", np.random.rand(256*100,), {"units": "1/A"})
+		self.createDataSet("Qy", np.random.rand(256*100,), {"units": "1/A"})
+		self.createDataSet("Qz", np.random.rand(256*100,), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(33,256*100,), {"units": "1/cm"})
 		self.createDataSet("Time", np.random.rand(33,), {"units": "ms"})
 		self.closeFile()
+
+
+class Generic2DQTimeSeries(ExampleFile):
+    def write(self):
+        self.createFile()
+        self.createEntry("sasentry01")
+        self.createTitle('example of generic 2D SAS data in a time series, I(Q(t),t)')
+        self.createData("sasdata01", np.array([0,1]), "Time,Q")
+        nx, ny, nt = (7, 5, 4)
+        self.createDataSet("Qx", np.random.rand(nt,nx*ny,), {"units": "1/A"})
+        self.createDataSet("Qy", np.random.rand(nt,nx*ny,), {"units": "1/A"})
+        self.createDataSet("Qz", np.random.rand(nt,nx*ny,), {"units": "1/A"})
+        self.createDataSet("I", np.random.rand(nt,nx*ny,), {"units": "1/cm"})
+        self.createDataSet("Time", np.random.rand(nt,), {"units": "ms"})
+        self.closeFile()
 
 
 class Generic2DTimeTPSeries(ExampleFile):
@@ -120,7 +146,9 @@ class Generic2DTimeTPSeries(ExampleFile):
 		self.createFile()
 		self.createEntry("sasentry01")
 		self.createData("sasdata01", np.array([1,3,4]), "Temperature,Time,Pressure,Q,Q", None, {"Time_indices" : np.array([1]), "Temperature_indices" : np.array([0]), "Pressure_indices" : np.array([2])})
-		self.createDataSet("Q", np.random.rand(7,3,3), {"units": "1/A"})
+		self.createDataSet("Qx", np.random.rand(7,3,3), {"units": "1/A"})
+		self.createDataSet("Qy", np.random.rand(7,3,3), {"units": "1/A"})
+		self.createDataSet("Qz", np.random.rand(7,3,3), {"units": "1/A"})
 		self.createDataSet("I", np.random.rand(3,7,2,3,3), {"units": "1/cm"})
 		self.createDataSet("Time", np.random.rand(7,), {"units": "ms"})
 		self.createDataSet("Temperature", np.random.rand(3,), {"units": "ms"})

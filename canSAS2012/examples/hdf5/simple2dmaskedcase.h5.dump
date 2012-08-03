@@ -21,7 +21,7 @@ GROUP "/" {
          }
       DATASPACE  SCALAR
       DATA {
-      (0): "2009-09-09T09:09:09-0000"
+      (0): "2012-08-02T21:44:21-0600"
       }
    }
    ATTRIBUTE "producer" {
@@ -75,7 +75,7 @@ GROUP "/" {
             }
          }
          ATTRIBUTE "Mask_indices" {
-            DATATYPE  H5T_STD_I64LE
+            DATATYPE  H5T_STD_I32LE
             DATASPACE  SIMPLE { ( 2 ) / ( 2 ) }
             DATA {
             (0): 0, 1
@@ -94,7 +94,7 @@ GROUP "/" {
             }
          }
          ATTRIBUTE "Q_indices" {
-            DATATYPE  H5T_STD_I64LE
+            DATATYPE  H5T_STD_I32LE
             DATASPACE  SIMPLE { ( 2 ) / ( 2 ) }
             DATA {
             (0): 0, 1
@@ -120,7 +120,39 @@ GROUP "/" {
             DATATYPE  H5T_STD_I8LE
             DATASPACE  SIMPLE { ( 256, 100 ) / ( 256, 100 ) }
          }
-         DATASET "Q" {
+         DATASET "Qx" {
+            DATATYPE  H5T_IEEE_F64LE
+            DATASPACE  SIMPLE { ( 256, 100 ) / ( 256, 100 ) }
+            ATTRIBUTE "units" {
+               DATATYPE  H5T_STRING {
+                     STRSIZE 3;
+                     STRPAD H5T_STR_NULLPAD;
+                     CSET H5T_CSET_ASCII;
+                     CTYPE H5T_C_S1;
+                  }
+               DATASPACE  SCALAR
+               DATA {
+               (0): "1/A"
+               }
+            }
+         }
+         DATASET "Qy" {
+            DATATYPE  H5T_IEEE_F64LE
+            DATASPACE  SIMPLE { ( 256, 100 ) / ( 256, 100 ) }
+            ATTRIBUTE "units" {
+               DATATYPE  H5T_STRING {
+                     STRSIZE 3;
+                     STRPAD H5T_STR_NULLPAD;
+                     CSET H5T_CSET_ASCII;
+                     CTYPE H5T_C_S1;
+                  }
+               DATASPACE  SCALAR
+               DATA {
+               (0): "1/A"
+               }
+            }
+         }
+         DATASET "Qz" {
             DATATYPE  H5T_IEEE_F64LE
             DATASPACE  SIMPLE { ( 256, 100 ) / ( 256, 100 ) }
             ATTRIBUTE "units" {

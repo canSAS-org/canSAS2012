@@ -21,7 +21,7 @@ GROUP "/" {
          }
       DATASPACE  SCALAR
       DATA {
-      (0): "2009-09-09T09:09:09-0000"
+      (0): "2012-08-02T21:44:21-0600"
       }
    }
    ATTRIBUTE "producer" {
@@ -87,7 +87,7 @@ GROUP "/" {
             }
          }
          ATTRIBUTE "Q_indices" {
-            DATATYPE  H5T_STD_I64LE
+            DATATYPE  H5T_STD_I32LE
             DATASPACE  SIMPLE { ( 2 ) / ( 2 ) }
             DATA {
             (0): 0, 1

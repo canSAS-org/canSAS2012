@@ -1,9 +1,18 @@
+#!/usr/bin/env python
+
 import numpy as np
 import h5py
 import os
 import sys
 import inspect
 import traceback
+import time
+
+
+FILE_TIMESTAMP = time.strftime("%Y-%m-%dT%H:%M:%S")
+FILE_TIMESTAMP += '%+03d%02d' % (-time.timezone/60/60, abs(time.timezone/60) % 60)
+FILE_PRODUCER = "canSAS"
+
 
 class ExampleFile:
 
@@ -14,8 +23,8 @@ class ExampleFile:
 	def createFile(self):
 		self.f = h5py.File(self.name, "w")
 		self.f.attrs['file_name'] = self.name
-		self.f.attrs['file_time'] = "2009-09-09T09:09:09-0000"
-		self.f.attrs['producer'] = "canSAS"
+		self.f.attrs['file_time'] = FILE_TIMESTAMP
+		self.f.attrs['producer'] = FILE_PRODUCER
 		#self.f.attrs['HDF5_Version'] = h5py.version.hdf5_version
 		#self.f.attrs['h5py_version'] = h5py.version.version
 
@@ -27,6 +36,9 @@ class ExampleFile:
 		self.sasentry.attrs["NX_class"] = "SASentry"
 		self.sasentry.attrs["version"] = "1.0"
 	
+	def createTitle(self, title):
+		self.sasentry.create_dataset('Title', (), data=title)
+	
 	def createData(self, name, qi, ii, mi=None, attributes=None):
 		self.sasdata = self.sasentry.create_group(name)
 		self.sasdata.attrs["NX_class"] = "SASdata"
@@ -37,9 +49,6 @@ class ExampleFile:
 		if attributes != None:
 			for key in attributes.keys():
 				self.sasdata.attrs[key] = attributes[key]
-	
-	def createTitle(self, title):
-		self.sasdata.create_dataset('Title', (), data=title)
 
 	def createDataSet(self, name, array, attributes=None):
 		ds = self.sasdata.create_dataset(name, array.shape, data=array)
@@ -118,11 +127,11 @@ class Generic2DTimeSeries(ExampleFile):
 		self.createFile()
 		self.createEntry("sasentry01")
 		self.createData("sasdata01", np.array([1]), "Time,Q", None, {"Time_indices" : np.array([0])})
-		self.createDataSet("Qx", np.random.rand(256*100,), {"units": "1/A"})
-		self.createDataSet("Qy", np.random.rand(256*100,), {"units": "1/A"})
-		self.createDataSet("Qz", np.random.rand(256*100,), {"units": "1/A"})
-		self.createDataSet("I", np.random.rand(33,256*100,), {"units": "1/cm"})
-		self.createDataSet("Time", np.random.rand(33,), {"units": "ms"})
+		self.createDataSet("Qx", np.random.rand(32*16,), {"units": "1/A"})
+		self.createDataSet("Qy", np.random.rand(32*16,), {"units": "1/A"})
+		self.createDataSet("Qz", np.random.rand(32*16,), {"units": "1/A"})
+		self.createDataSet("I", np.random.rand(11,32*16,), {"units": "1/cm"})
+		self.createDataSet("Time", np.random.rand(11,), {"units": "ms"})
 		self.closeFile()
 
 

@@ -1,15 +1,15 @@
-HDF5 "generic2dcase.h5" {
+HDF5 "generic2dqtimeseries.h5" {
 GROUP "/" {
    ATTRIBUTE "file_name" {
       DATATYPE  H5T_STRING {
-            STRSIZE 16;
+            STRSIZE 23;
             STRPAD H5T_STR_NULLPAD;
             CSET H5T_CSET_ASCII;
             CTYPE H5T_C_S1;
          }
       DATASPACE  SCALAR
       DATA {
-      (0): "generic2dcase.h5"
+      (0): "generic2dqtimeseries.h5"
       }
    }
    ATTRIBUTE "file_time" {
@@ -61,17 +61,26 @@ GROUP "/" {
          (0): "1.0"
          }
       }
+      DATASET "Title" {
+         DATATYPE  H5T_STRING {
+               STRSIZE 58;
+               STRPAD H5T_STR_NULLPAD;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }
+         DATASPACE  SCALAR
+      }
       GROUP "sasdata01" {
          ATTRIBUTE "I_axes" {
             DATATYPE  H5T_STRING {
-                  STRSIZE 1;
+                  STRSIZE 6;
                   STRPAD H5T_STR_NULLPAD;
                   CSET H5T_CSET_ASCII;
                   CTYPE H5T_C_S1;
                }
             DATASPACE  SCALAR
             DATA {
-            (0): "Q"
+            (0): "Time,Q"
             }
          }
          ATTRIBUTE "NX_class" {
@@ -88,14 +97,14 @@ GROUP "/" {
          }
          ATTRIBUTE "Q_indices" {
             DATATYPE  H5T_STD_I32LE
-            DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
+            DATASPACE  SIMPLE { ( 2 ) / ( 2 ) }
             DATA {
-            (0): 0
+            (0): 0, 1
             }
          }
          DATASET "I" {
             DATATYPE  H5T_IEEE_F64LE
-            DATASPACE  SIMPLE { ( 25600 ) / ( 25600 ) }
+            DATASPACE  SIMPLE { ( 4, 35 ) / ( 4, 35 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
                      STRSIZE 4;
@@ -111,7 +120,7 @@ GROUP "/" {
          }
          DATASET "Qx" {
             DATATYPE  H5T_IEEE_F64LE
-            DATASPACE  SIMPLE { ( 25600 ) / ( 25600 ) }
+            DATASPACE  SIMPLE { ( 4, 35 ) / ( 4, 35 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
                      STRSIZE 3;
@@ -127,7 +136,7 @@ GROUP "/" {
          }
          DATASET "Qy" {
             DATATYPE  H5T_IEEE_F64LE
-            DATASPACE  SIMPLE { ( 25600 ) / ( 25600 ) }
+            DATASPACE  SIMPLE { ( 4, 35 ) / ( 4, 35 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
                      STRSIZE 3;
@@ -143,7 +152,7 @@ GROUP "/" {
          }
          DATASET "Qz" {
             DATATYPE  H5T_IEEE_F64LE
-            DATASPACE  SIMPLE { ( 25600 ) / ( 25600 ) }
+            DATASPACE  SIMPLE { ( 4, 35 ) / ( 4, 35 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
                      STRSIZE 3;
@@ -154,6 +163,22 @@ GROUP "/" {
                DATASPACE  SCALAR
                DATA {
                (0): "1/A"
+               }
+            }
+         }
+         DATASET "Time" {
+            DATATYPE  H5T_IEEE_F64LE
+            DATASPACE  SIMPLE { ( 4 ) / ( 4 ) }
+            ATTRIBUTE "units" {
+               DATATYPE  H5T_STRING {
+                     STRSIZE 2;
+                     STRPAD H5T_STR_NULLPAD;
+                     CSET H5T_CSET_ASCII;
+                     CTYPE H5T_C_S1;
+                  }
+               DATASPACE  SCALAR
+               DATA {
+               (0): "ms"
                }
             }
          }

@@ -179,9 +179,9 @@ class Generic2DCase(ExampleFile):
         self.createTitle('example of generic 2D SAS data, I(Q)')
         self.createData("sasdata01", np.array([0]), "Q")
         nx, ny = (7, 5)
-        self.createDataSet("Qx", np.random.rand(nx,ny,), {"units": "1/A"})
-        self.createDataSet("Qy", np.random.rand(nx,ny,), {"units": "1/A"})
-        self.createDataSet("Qz", np.random.rand(nx,ny,), {"units": "1/A"})
+        self.createDataSet("Qx", np.random.rand(nx*ny,), {"units": "1/A"})
+        self.createDataSet("Qy", np.random.rand(nx*ny,), {"units": "1/A"})
+        self.createDataSet("Qz", np.random.rand(nx*ny,), {"units": "1/A"})
         self.createDataSet("I", np.random.rand(nx*ny,), {"units": "1/cm"})
         self.closeFile()
 

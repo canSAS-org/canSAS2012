@@ -35,9 +35,9 @@ We present the details of the data format and some examples of usage
 and welcome comments.
 
 	The canSAS (Collective Action for Nomadic Small-Angle Scatterers) forum 
-	met in Uppsala, Sweden in July 2012 to discuss standardization of the 
+	met in Uppsala, Sweden in July 2012 [#]_ to discuss standardization of the 
 	storage of reduced small-angle scattering of any dimension to be considered 
-	for analysis.
+	for analysis. [#]_
 	
 	This document describes the current specification as an 
 	outcome of that meeting.
@@ -54,3 +54,5 @@ and welcome comments.
 
 .. [#]	http://www.cansas.org
 .. [#]	http://svn.smallangles.net/trac/canSAS/browser/1dwg/tags/v1.0/doc/cansas-1d-1_0-manual.pdf
+.. [#]  http://www.smallangles.net/wgwiki/index.php/canSAS-2012
+.. [#]  http://www.smallangles.net/wgwiki/index.php/2012_Data_Discussion

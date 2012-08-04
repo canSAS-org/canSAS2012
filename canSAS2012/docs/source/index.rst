@@ -56,3 +56,39 @@ and welcome comments.
 .. [#]	http://svn.smallangles.net/trac/canSAS/browser/1dwg/tags/v1.0/doc/cansas-1d-1_0-manual.pdf
 .. [#]  http://www.smallangles.net/wgwiki/index.php/canSAS-2012
 .. [#]  http://www.smallangles.net/wgwiki/index.php/2012_Data_Discussion
+
+
+
+..	----------------------------------------------------------------------
+	####################################################################
+	### These remarks should be folded into the introduction above.
+	####################################################################
+	
+	On 2012-08-03, Adrien Rennie writes:
+	
+	One comment that I would make is that, to encourage facilities (and 
+	facility management) to support this, we have to be clear about 
+	benefits - particularly as regards science. Even the introduction to 
+	the data format should emphasize that apart from the obvious step of 
+	facilitating analysis of large volumes of data, there are two further 
+	clear advantages: (a) a data format that will enable storage of 
+	appropriate metadata and of uncertainties in scattering data and 
+	metadata with sufficient detail to permit their use optimized 
+	analysis will permit improved interpretation and greater reliability 
+	of results.  Advances may rely on appropriate regularization of 
+	models and understanding the distribution and origin of uncertainty 
+	in data and metadata. (b) Provision of metadata and treated data in a 
+	systematic way will allow users and facilities to meet more readily 
+	present and future deposition standards that are being required for 
+	publications.
+
+	I hope that marketing the work on the basis of better science will be 
+	one way to encourage the adoption.
+
+
+..	----------------------------------------------------------------------
+
+	Another advantage of the definition of the standard structure, apart 
+	from its implementation(s), is to define a common interface where 
+	reduction stops and analysis starts.  This interface is needed
+	especially for analysis of higher dimensionality data.

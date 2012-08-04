@@ -9,6 +9,7 @@ Contents
 .. toctree::
    :maxdepth: 2
    
+   basics
    framework
    implementation
    examples

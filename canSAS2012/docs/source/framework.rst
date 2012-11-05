@@ -6,6 +6,11 @@
 Structure of the canSAS2012 data format
 ==================================================
 
+.. sidebar:: work in progress...
+
+	This document is under construction.
+	Many parts have yet to be written.
+
 .. describe the framework
 
 Goals
@@ -15,13 +20,13 @@ Description
 ==============
 
 
-.. figure:: 2012-minimum.png
+.. figure:: graphics/2012-minimum.png
     :alt: Absolute minimum requirement for analysis of SAS data 
 
     Absolute minimum requirement for analysis of SAS data .
 
 
-.. figure:: 2012-recommended-minimum.png
+.. figure:: graphics/2012-recommended-minimum.png
     :alt: Minimum content recommended for reduced SAS data
 
     Minimum content recommended for reduced SAS data.
@@ -217,7 +222,7 @@ Contents:
 	    :linenos:
 	    :language: guess
 
-	.. figure:: example1.png
+	.. figure:: graphics/example1.png
 	    :alt: view of original hkl_ioc.mac HTML documentation
 	
 	    Documentation of the original **hkl_ioc.mac** file.

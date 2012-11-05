@@ -1,5 +1,7 @@
 .. $Id$
 
+.. index:: ! implementation
+
 .. _implementation:
 
 ==================================================

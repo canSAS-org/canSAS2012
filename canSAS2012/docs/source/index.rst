@@ -42,6 +42,10 @@ and welcome comments.
 	This document describes the current specification as an 
 	outcome of that meeting.
 
+.. sidebar:: work in progress...
+
+	This document is under construction.
+	Many parts have yet to be written.
 
 .. toctree::
    :maxdepth: 2
@@ -53,9 +57,9 @@ and welcome comments.
 .. rubric:: Footnotes
 
 .. [#]	http://www.cansas.org
-.. [#]	http://svn.smallangles.net/trac/canSAS/browser/1dwg/tags/v1.0/doc/cansas-1d-1_0-manual.pdf
-.. [#]  http://www.smallangles.net/wgwiki/index.php/canSAS-2012
-.. [#]  http://www.smallangles.net/wgwiki/index.php/2012_Data_Discussion
+.. [#]	http://www.cansas.org/trac/export/265/1dwg/tags/v1.0/doc/cansas-1d-1_0-manual.pdf
+.. [#]  http://www.cansas.org/wgwiki/index.php/canSAS-2012
+.. [#]  http://www.cansas.org/wgwiki/index.php/2012_Data_Discussion
 
 
 

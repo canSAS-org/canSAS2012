@@ -2,7 +2,16 @@
 <projectDescription>
 	<name>canSAS2012</name>
 	<comment>canSAS multi-dimensional data standard</comment>
-	<projects/>
-	<buildSpec/>
-	<natures/>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.python.pydev.PyDevBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.python.pydev.pythonNature</nature>
+	</natures>
 </projectDescription>

@@ -28,7 +28,7 @@ presented at the
 	
 	.. figure:: graphics/2006-10-09-scientific-workflow.jpg
 	    :alt: scientific workflow
-	    :height: 400 px
+	    :width: 95%
 
 .. note:: *Reduced data* is the data presented for analysis after all 
 	instrument-specific artifacts and corrections have been applied.

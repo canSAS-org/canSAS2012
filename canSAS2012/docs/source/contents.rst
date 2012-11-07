@@ -9,6 +9,9 @@ Contents
 .. toctree::
    :maxdepth: 2
    
+   benefits
+   motivation
+   requirements
    basics
    framework
    implementation

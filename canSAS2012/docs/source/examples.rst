@@ -26,8 +26,7 @@ A few key example models have been identified, as shown next.
 * `minimum recommended 1-D I(Q)`_
 * `generic 2-D I(Q)`_
 * `simple 2-D (image) I(Q)`_
-* `1D SAS data in a time series I(t,Q)`_
-
+* `1D SAS data in a time series I(t,Q(t))`_
 
 
 :math:`I(Q)` models
@@ -91,6 +90,24 @@ Examples:
 				Qx: float[100, 512]
 				Qy: float[100, 512]
 				Qx: float[100, 512]
+
+.. _2-D (image) I(|Q|) with uncertainty:
+
+2-D (image)  :math:`I(|Q|)\pm\sigma(|Q|)`
+------------------------------------------------------
+
+.. code-block:: text
+	:linenos:
+	
+	SASroot
+		SASentry
+			SASdata
+				@Q_indices=0,1
+				@I_axes="Q,Q"
+				I: float[300, 300]
+					@uncertainty=Idev
+				Q: float[300, 300]
+				Idev: float[300, 300]
 
 2-D SAS/WAS images
 ------------------
@@ -269,7 +286,7 @@ Examples:
 				Q: float[100]
 				Time: float[nTime]	
 
-.. _1D SAS data in a time series I(t,Q):
+.. _1D SAS data in a time series I(t,Q(t)):
 
 1-D :math:`I(t,Q(t))`
 ----------------------------------------
@@ -285,6 +302,28 @@ This example is slightly more complex, showing data where :math:`Q` is also time
 				@Q_indices=0,1
 				@I_axes="Time,Q"
 				I: float[nTime,100]
+				Q: float[nTime,100]
+				Time: float[nTime]
+
+.. _1D SAS data in a time series I(t,Q(t)) +/- Idev(t,Q(t)):
+
+1-D :math:`I(t,Q(t))\pm\sigma(t,Q(t))`
+--------------------------------------------
+
+Now, provide the uncertainties (where ``Idev`` represents 
+:math:`\sigma(t,Q(t))` ) of the intensities:
+
+.. code-block:: text
+	:linenos:
+		
+	SASroot
+		SASentry
+			SASdata
+				@Q_indices=0,1
+				@I_axes="Time,Q"
+				I: float[nTime,100]
+					@uncertainty=Idev
+				Idev: float[nTime,100]
 				Q: float[nTime,100]
 				Time: float[nTime]
 
@@ -408,6 +447,74 @@ where :math:`Q` only depends on time.
 				Time: float[nTime]
 				Temperature: float[nTemperature]
 				Pressure: float[nPressure]
+
+
+.. _representing uncertainty components:
+
+Representing Uncertainty Components
+--------------------------------------
+
+It is possible to represent the components that contribute
+to the uncertainty by use of a subgroup.  Add a *@components* attribute
+to the principal uncertainty, naming the subgroup that contains the 
+contributing datasets.
+
+As with all uncertainties, each component should have the same *shape* 
+(rank and dimensions) as its parent dataset.
+
+Note that a *@basis* attribute indicates how this uncertainty was determined.
+The values are expected to be a short list, as yet unspecified.
+
+.. code-block:: text
+	:linenos:
+
+	SASroot
+		SASentry
+			SASdata
+				@Q_indices=0
+				@I_axes=Q
+				Q : float[nI]
+				I : float[nI]
+				   @uncertainty=Idev
+				Idev : float[nI]
+				   @components=I_uncertainties
+				I_uncertainties:
+				   electronic : float[nI]
+				      @basis="Johnson noise"
+				   counting_statistics: float[nI]
+				      @basis="shot noise"
+				   secondary_standard: float[nI]
+				      @basis="esd"
+
+
+.. _proposed expression of multiple uncertainties:
+
+Expression of Multiple Uncertainties (*proposed*)
+----------------------------------------------------
+
+.. note::  This is just a proposition.  It is based on the assumption
+   that some analysis method might actually know how to handle this case.
+
+If more than one uncertainty contributes to the intensity (and the method
+described above in :ref:`representing uncertainty components` 
+is not appropriate), it is proposed to
+name more than one uncertainty dataset in the *@uncertainty* attribute.
+The first member in this list would be the principal uncertainty.
+One example be: 
+
+.. code-block:: text
+	:linenos:
+
+	SASroot
+		SASentry
+			SASdata
+				@Q_indices=0
+				@I_axes=Q
+				Q : float[nI]
+				I : float[nI]
+				   @uncertainty=Idev,Ierr
+				Idev : float[nI]
+				Ierr : float[nI]
 
 
 

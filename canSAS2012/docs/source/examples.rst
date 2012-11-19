@@ -508,6 +508,7 @@ described above in :ref:`representing uncertainty components`
 is not appropriate), it is proposed to
 name more than one uncertainty dataset in the *@uncertainty* attribute.
 The first member in this list would be the principal uncertainty.
+The *@basis* attribute can be used to further describe each uncertainty.
 One example be: 
 
 .. code-block:: text
@@ -522,7 +523,9 @@ One example be:
         I : float[nI]
           @uncertainty=Idev,Ierr
         Idev : float[nI]
+          @basis="esd"
         Ierr : float[nI]
+          @basis="absolute intensity calibration"
 
 
 

@@ -1,9 +1,9 @@
 .. $Id$
 
-.. _structure:
+.. _framework overview:
 
 ==================================================
-Structure of the canSAS2012 data format
+Overview of the canSAS2012 data format
 ==================================================
 
 .. sidebar:: work in progress...
@@ -16,27 +16,92 @@ Structure of the canSAS2012 data format
 Goals
 ==============
 
+Describe the structure of data to be presented for small-angle scattering analysis.
+Make the structure sufficiently general that it may be used for analysis of any form
+of reduced SAS data.
+
+The hierarchical structure of the canSAS standard has been designed to be 
+compatible with the NeXus data format.
+
 Description
 ==============
 
+Absolute minimum requirement for analysis of SAS data
+-------------------------------------------------------
+
+The *least* amount of information necessary for meaningful 
+small-angle scattering analysis is the presentation of 
+the :math:`I(Q)` SAS data.  In the canSAS standard,
+this data is presented within 
+a *SASdata* group (holding the data from a single experiment), 
+inside of *SASentry* group (holding the data from a single sample),
+inside of a *SASroot* group (holding one or more experiments).
+
+.. note:: It is recommended to store more metadata than this absolute minimum standard shows.
+   See the section :ref:`minimum recommended content` for more details.
 
 .. figure:: graphics/2012-minimum.png
-    :alt: Absolute minimum requirement for analysis of SAS data 
 
-    Absolute minimum requirement for analysis of SAS data .
+    Absolute minimum requirement for analysis of SAS data.
+    
+Alternatively, this may be shown using a more condensed :ref:`notation <notation>`, as:
 
+.. code-block:: text
+  :linenos:
+  
+  SASroot
+    SASentry
+      SASdata
+        @Q_indices=0
+        @I_axes="Q"
+        I: float[]
+        Q: float[]
+
+.. _minimum recommended content:
+
+Minimum content recommended for reduced SAS data
+--------------------------------------------------
+
+It is recommended that instruments provide at least the information described 
+in this section to satisfy the needs of data analysis and visualization software.
 
 .. figure:: graphics/2012-recommended-minimum.png
-    :alt: Minimum content recommended for reduced SAS data
 
     Minimum content recommended for reduced SAS data.
 
+.. code-block:: text
+  :linenos:
+  
+  SASroot
+    SASentry
+      Title: string
+      SASdata
+        @Q_indices=0
+        @I_axes="Q"
+        I: float[]
+        Q: float[]
+        probe_type: string
+        wavelength: float (or possibly float[])
+        Idev: float[]
+        Qdev: float[]
+        SASnote
+          anything: string, float, float[], ...
+      SASsample
+        name: string
+        
+--------------
+
+.. caution:: re-write from this point downward on this page
 
 Terms
 ===============
 
 .. index:: ! SASroot
 	groups; SASroot
+	
+.. sidebar:: TODO!
+
+	break this up into tables for each group
 
 **SASroot**:
 	derived from original 1D format, attributes have changed
@@ -106,6 +171,20 @@ Terms
 			To indicate the dependency relationships of other varied parameters, 
 			use attributes similar to ``@Mask_indices`` (such as ``@Temperature_indices``
 			or ``@Pressure_indices``).
+		
+		**SASsample**:
+			derived from original 1D format, content and attributes have changed
+			
+			.. caution:: needs full write-up
+
+		.. index:: ! Title
+
+		**Title**:
+			(string) Title of this *SASentry*.  
+			Optional attribute:  *name={short-Run-identifier}*.
+			Example::
+			
+				Glassy Carbon C4 12keV
 
 
 .. index:: ! data objects
@@ -132,6 +211,8 @@ The name chosen for each data object must adhere to the `naming standard`_ descr
 	Unidata UDunits
 	UDunits
 
+.. _units:
+
 :@units: (required for all numerical objects) 
 			Engineering units of this data object.  
 			Use the `Unidata UDunits`_ [#UDunits]_ 
@@ -151,12 +232,16 @@ Naming Standard
 
 The **names** for data objects should follow a standard 
 convention that starts with a letter (upper or lower case) and 
-then letters, numbers, and "_". The length of the name is limited 
-to no more than 63 characters (imposed by the rule HDF5 for names).
+then a sequence composed of letters, numbers, and/or "_". 
+The length of the name is limited 
+to no more than 63 characters (imposed by the HDF5 rule for names).
 
-This standard convention may be described by the regular expression::
-
-	[A-Za-z][\\w_]* 
+	.. index:: ! naming standard; regular expression
+	
+	This standard convention for object names may be 
+	described by this regular expression::
+	
+		[A-Za-z][\\w_]* 
 
 
 .. index:: ! uncertainty; supplemental
@@ -189,7 +274,7 @@ Contents:
 
 
 
-.. [#data_object] Such as an array or scalar or text. HDF5 calls this a *dataset*,   
+.. [#data_object] Such as text, a scalar, or an array. HDF5 calls this a *dataset*,   
 	Not a folder or a group or an object that contain other objects.
 .. _Unidata UDunits: http://www.unidata.ucar.edu/software/udunits/udunits-2-units.html
 .. [#UDunits]

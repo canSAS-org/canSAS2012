@@ -187,12 +187,11 @@ of the analysis process.
 Coordinate Axes
 ===========================
 
-The canSAS standard assumes a right-hand rule coordinate system, 
-consistent with a variety of software packages and data formats.
-See, for example: http://www.nexusformat.org/Coordinate_Systems
+The canSAS standard assumes a right-hand rule coordinate system, [#]_, [#]_, [#]_
+consistent with a variety of software packages and data formats. [#]_
 
 :z:
-	:math:`z` is along the trajectory of the radiation
+	:math:`z` is along the trajectory of the incident radiation
 	(positive value in the direction towards the detector)
 :x:
 	:math:`x` is orthogonal to :math:`z` in the horizontal plane
@@ -201,9 +200,19 @@ See, for example: http://www.nexusformat.org/Coordinate_Systems
 :y:
 	:math:`y` is orthogonal to :math:`z` and :math:`x` 
 	in the vertical plane (positive values increase upwards)
-		
 
-
+.. [#] http://en.wikipedia.org/wiki/Coordinate_system#Cartesian_coordinate_system
+.. [#] http://en.wikipedia.org/wiki/Polar_coordinate_system
+.. [#] http://en.wikipedia.org/wiki/Spherical_coordinate_system
+.. [#] http://www.nexusformat.org/Coordinate_Systems
+	
+	.. _Coordinate Axes geometry:
+	
+	.. figure:: graphics/translation-orientation-geometry-2.png
+	    :alt: Coordinate Axes
+	    :height: 400 px
+	    
+	    definition of the coordinate axes for translations and rotations
 
 .. index::
 	! orientation
@@ -214,16 +223,24 @@ See, for example: http://www.nexusformat.org/Coordinate_Systems
 .. _orientation:
 
 Orientation
-===========================
+-----------
 
-Orientation (angles) describes single-axis rotations (rotations about
-multiple axes require more information):
+Orientation angles [#]_ in the canSAS standard describe single-axis rotations. 
+Rotations about multiple axes require more information.
+The rotations are described in terms of roll, pitch, and yaw [#]_ :
 	
-**roll**
-	is a rotation about the :math:`z` axis
+:**roll**:
+	a rotation about the :math:`z` axis, 
+	where zero rotation is along the positive :math:`x` axis
 
-**pitch**
-	is a rotation about the :math:`x` axis
+:**pitch**:
+	a rotation about the :math:`x` axis, 
+	where zero rotation is along the positive :math:`z` axis
 
-**yaw**
-	is a rotation about the :math:`y` axis
+:**yaw**:
+	a rotation about the :math:`y` axis, 
+	where zero rotation is along the positive :math:`z` axis
+ 
+.. [#] http://en.wikipedia.org/wiki/Orientation_%28geometry%29
+.. [#] http://en.wikipedia.org/wiki/Tait-Bryan_angles#Aircraft_attitudes
+ 

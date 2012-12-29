@@ -121,7 +121,7 @@ Consider the example of the 2-D time-dependent masked :ref:`image <2-D.time-depe
 another example
 --------------------------
 
-See the model for 2-D  :math:`I(T,t,P,Q(t))` :ref:`images <2-D.images.with.varied.T.t.P>`.
+See the model for 2-D  :math:`I(T,t,P,Q(t))` :ref:`images <example 2-D.images.with.varied.T.t.P>`.
 
 	Given the indices ``i,j,k,l,m``, return all values for this datum::
 	

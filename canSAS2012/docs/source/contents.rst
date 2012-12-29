@@ -14,8 +14,11 @@ Contents
    requirements
    basics
    framework
+   structure
+   sasdata
    implementation
    examples
+   notation
 
 About this documentation
 ========================

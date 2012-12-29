@@ -142,6 +142,8 @@ The WAS data (not covered by this canSAS standard) is 256 x 256 pixels.
         Qy: float[256, 256]
         Qz: float[256, 256]
 
+.. _example 2-D masked image:
+
 2-D masked image
 ----------------
 
@@ -424,7 +426,7 @@ Examples:
         T: float[nTemperature]
         P: float[nPressure]
 
-.. _2-D.images.with.varied.T.t.P:
+.. _example 2-D.images.with.varied.T.t.P:
 
 2-D  :math:`I(T,t,P,Q(t))` images
 ---------------------------------

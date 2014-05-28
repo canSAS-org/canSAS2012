@@ -2,9 +2,9 @@
 
 .. _examples:
 
-==================================================
+======================================
 Examples of the canSAS2012 data format
-==================================================
+======================================
 
 .. sidebar:: TODO: 
 
@@ -30,7 +30,7 @@ A few key example models have been identified, as shown next.
 
 
 :math:`I(Q)` models
-=============================
+===================
 
 .. _minimum recommended 1-d I(Q):
 
@@ -89,12 +89,12 @@ Examples:
         I: float[100, 512]
         Qx: float[100, 512]
         Qy: float[100, 512]
-        Qx: float[100, 512]
+        Qz: float[100, 512]
 
 .. _2-D (image) I(|Q|) with uncertainty:
 
 2-D (image)  :math:`I(|Q|)\pm\sigma(|Q|)`
-------------------------------------------------------
+-----------------------------------------
 
 .. code-block:: text
   :linenos:
@@ -200,7 +200,9 @@ Examples:
 Consider the multi-technique experiment that produces 
 small-angle neutron and X-ray scattering data. 
 Here the SANS data image is 100 x 512 pixels and
-the SAXS data is 256 x 256 pixels.
+the SAXS data is 256 x 256 pixels.  (Normally, you will
+need more metadata for each probe, such as wavelength, to
+make a full analysis using both datasets.)
 
 .. code-block:: text
   :linenos:
@@ -209,6 +211,7 @@ the SAXS data is 256 x 256 pixels.
     SASentry
       SASdata
         @name="sans"
+        @probe_type="neutron"
         @Q_indices=0
         @I_axes="Q"
         I: float[100*512]
@@ -217,6 +220,7 @@ the SAXS data is 256 x 256 pixels.
         Qz: float[100*512]
       SASdata
         @name="saxs"
+        @probe_type="xray"
         @Q_indices=0
         @I_axes="Q"
         I: float[256*256]
@@ -267,7 +271,7 @@ previously from the data for various reasons.
 
 
 :math:`I(t,Q)` models with time-dependence
-==========================================================
+==========================================
 
 1-D :math:`I(t,Q)`
 ------------------
@@ -291,7 +295,7 @@ Examples:
 .. _1D SAS data in a time series I(t,Q(t)):
 
 1-D :math:`I(t,Q(t))`
-----------------------------------------
+---------------------
 
 This example is slightly more complex, showing data where :math:`Q` is also time-dependent.
 
@@ -310,7 +314,7 @@ This example is slightly more complex, showing data where :math:`Q` is also time
 .. _1D SAS data in a time series I(t,Q(t)) +/- Idev(t,Q(t)):
 
 1-D :math:`I(t,Q(t))\pm\sigma(t,Q(t))`
---------------------------------------------
+--------------------------------------
 
 Now, provide the uncertainties (where ``Idev`` represents 
 :math:`\sigma(t,Q(t))` ) of the intensities:
@@ -331,7 +335,7 @@ Now, provide the uncertainties (where ``Idev`` represents
 
 
 2-D :math:`I(t,Q)`
--------------------
+------------------
 
 Examples: 
 :download:`HDF5 <../../examples/hdf5/generic2dtimeseries.h5>`
@@ -375,7 +379,7 @@ This example is slightly more complex, showing data where :math:`Q` is also time
 .. _2-D.time-dependent.masked.image:
 
 2-D :math:`I(t,Q(t))` masked image
------------------------------------------
+----------------------------------
 
 This example explores a bit more complexity, adding a mask that is time-dependent.
 
@@ -452,7 +456,7 @@ where :math:`Q` only depends on time.
 
 
 Complicated Uncertainties
-=============================
+=========================
 
 The uncertainties might be derived from several factors, or there may even be
 several uncertainties contributing.  In practical terms, these are special 
@@ -462,7 +466,7 @@ interesting to describe how they might be represented.
 .. _representing uncertainty components:
 
 Representing Uncertainty Components
---------------------------------------
+-----------------------------------
 
 It is possible to represent the components that contribute
 to the uncertainty by use of a subgroup.  Add a *@components* attribute
@@ -500,7 +504,7 @@ The values are expected to be a short list, as yet unspecified.
 .. _representing multiple uncertainties ... proposed:
 
 Representing Multiple Uncertainties (*proposed*)
-----------------------------------------------------
+------------------------------------------------
 
 .. note::  This is just a proposition.  It is based on the assumption
    that some analysis method might actually know how to handle this case.
@@ -537,7 +541,7 @@ Unhandled Cases
 ===============
 
 2-D image with :math:`Q_x` & :math:`Q_y` vectors
--------------------------------------------------------------------------
+------------------------------------------------
 
 This model is outside the scope of this format.  The method of addressing 
 the :math:`Q` values is different than for the other models.

@@ -427,8 +427,8 @@ Examples:
         Qy: float[nTime,nTemperature,nPressure,100*512]
         Qz: float[nTime,nTemperature,nPressure,100*512]
         Time: float[nTime]
-        T: float[nTemperature]
-        P: float[nPressure]
+        Temperature: float[nTemperature]
+        Pressure: float[nPressure]
 
 .. _example 2-D.images.with.varied.T.t.P:
 

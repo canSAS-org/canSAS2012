@@ -286,11 +286,12 @@ Examples:
   SASroot
     SASentry
       SASdata
-        @Q_indices=1
         @I_axes=Time,Q
-        I: float[nTime,100]
-        Q: float[100]
+        @Time_indices=0
+        @Q_indices=1
         Time: float[nTime]  
+        Q: float[100]
+        I: float[nTime,100]
 
 .. _1D SAS data in a time series I(t,Q(t)):
 
@@ -306,6 +307,7 @@ This example is slightly more complex, showing data where :math:`Q` is also time
     SASentry
       SASdata
         @Q_indices=0,1
+        @Time_indices=0
         @I_axes=Time,Q
         I: float[nTime,100]
         Q: float[nTime,100]
@@ -326,6 +328,7 @@ Now, provide the uncertainties (where ``Idev`` represents
     SASentry
       SASdata
         @Q_indices=0,1
+        @Time_indices=0
         @I_axes=Time,Q
         I: float[nTime,100]
           @uncertainty=Idev
@@ -348,6 +351,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=1
+        @Time_indices=0
         @I_axes=Time,Q
         I: float[nTime,100*512]
         Qx: float[100*512]
@@ -369,6 +373,7 @@ This example is slightly more complex, showing data where :math:`Q` is also time
     SASentry
       SASdata
         @Q_indices=0,1
+        @Time_indices=0
         @I_axes=Time,Q
         I: float[nTime,100*512]
         Qx: float[nTime,100*512]
@@ -392,6 +397,7 @@ This example explores a bit more complexity, adding a mask that is time-dependen
         @Q_indices=0,1,2
         @I_axes=Time,Q,Q
         @Mask_indices=1,2
+        @MTime_indices=0
         I: float[nTime,100,512]
         Qx: float[nTime,100,512]
         Qy: float[nTime,100,512]
@@ -420,6 +426,9 @@ Examples:
   SASroot
     SASentry
       SASdata
+        @Time_indices=0
+        @Temperature_indices=1
+        @Pressure_indices=2
         @Q_indices=0,1,2,3
         @I_axes=Time,Temperature,Pressure,Q
         I: float[nTime,nTemperature,nPressure,100*512]
@@ -444,6 +453,9 @@ where :math:`Q` only depends on time.
   SASroot
     SASentry
       SASdata
+        @Temperature_indices=0
+        @Time_indices=1
+        @Pressure_indices=2
         @Q_indices=1,3,4
         @I_axes=Temperature,Time,Pressure,Q,Q
         I: float[nTemperature,nTime,nPressure,100,512]

@@ -54,7 +54,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=0
-        @I_axes="Q"
+        @I_axes=Q
         I: float[100]
         Q: float[100]
 
@@ -85,7 +85,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=0,1
-        @I_axes="Q,Q"
+        @I_axes=Q,Q
         I: float[100, 512]
         Qx: float[100, 512]
         Qy: float[100, 512]
@@ -103,7 +103,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=0,1
-        @I_axes="Q,Q"
+        @I_axes=Q,Q
         I: float[300, 300]
           @uncertainty=Idev
         Q: float[300, 300]
@@ -128,7 +128,7 @@ The WAS data (not covered by this canSAS standard) is 256 x 256 pixels.
       SASdata
         @name="sasdata"
         @Q_indices=0,1
-        @I_axes="Q,Q"
+        @I_axes=Q,Q
         I: float[100, 512]
         Qx: float[100, 512]
         Qy: float[100, 512]
@@ -136,7 +136,7 @@ The WAS data (not covered by this canSAS standard) is 256 x 256 pixels.
       SASdata
         @name="wasdata"
         @Q_indices=0,1
-        @I_axes="Q,Q"
+        @I_axes=Q,Q
         I: float[256, 256]
         Qx: float[256, 256]
         Qy: float[256, 256]
@@ -158,7 +158,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=0,1
-        @I_axes="Q,Q"
+        @I_axes=Q,Q
         @Mask_indices=0,1
         I: float[100, 512]
         Qx: float[100, 512]
@@ -188,7 +188,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=0
-        @I_axes="Q"
+        @I_axes=Q
         I: float[100*512]
         Qx: float[100*512]
         Qy: float[100*512]
@@ -213,7 +213,7 @@ make a full analysis using both datasets.)
         @name="sans"
         @probe_type="neutron"
         @Q_indices=0
-        @I_axes="Q"
+        @I_axes=Q
         I: float[100*512]
         Qx: float[100*512]
         Qy: float[100*512]
@@ -222,7 +222,7 @@ make a full analysis using both datasets.)
         @name="saxs"
         @probe_type="xray"
         @Q_indices=0
-        @I_axes="Q"
+        @I_axes=Q
         I: float[256*256]
         Qx: float[256*256]
         Qy: float[256*256]
@@ -262,7 +262,7 @@ previously from the data for various reasons.
     SASentry
       SASdata
         @Q_indices=0
-        @I_axes="Q"
+        @I_axes=Q
         I: float[100*512  + 2000 + 256*256 - nDiscardedPixels]
         Qx: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
         Qy: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
@@ -287,7 +287,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=1
-        @I_axes="Time,Q"
+        @I_axes=Time,Q
         I: float[nTime,100]
         Q: float[100]
         Time: float[nTime]  
@@ -306,7 +306,7 @@ This example is slightly more complex, showing data where :math:`Q` is also time
     SASentry
       SASdata
         @Q_indices=0,1
-        @I_axes="Time,Q"
+        @I_axes=Time,Q
         I: float[nTime,100]
         Q: float[nTime,100]
         Time: float[nTime]
@@ -326,7 +326,7 @@ Now, provide the uncertainties (where ``Idev`` represents
     SASentry
       SASdata
         @Q_indices=0,1
-        @I_axes="Time,Q"
+        @I_axes=Time,Q
         I: float[nTime,100]
           @uncertainty=Idev
         Idev: float[nTime,100]
@@ -348,7 +348,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=1
-        @I_axes="Time,Q"
+        @I_axes=Time,Q
         I: float[nTime,100*512]
         Qx: float[100*512]
         Qy: float[100*512]
@@ -369,7 +369,7 @@ This example is slightly more complex, showing data where :math:`Q` is also time
     SASentry
       SASdata
         @Q_indices=0,1
-        @I_axes="Time,Q"
+        @I_axes=Time,Q
         I: float[nTime,100*512]
         Qx: float[nTime,100*512]
         Qy: float[nTime,100*512]
@@ -390,7 +390,7 @@ This example explores a bit more complexity, adding a mask that is time-dependen
     SASentry
       SASdata
         @Q_indices=0,1,2
-        @I_axes="Time,Q,Q"
+        @I_axes=Time,Q,Q
         @Mask_indices=1,2
         I: float[nTime,100,512]
         Qx: float[nTime,100,512]
@@ -421,7 +421,7 @@ Examples:
     SASentry
       SASdata
         @Q_indices=0,1,2,3
-        @I_axes="Time,Temperature,Pressure,Q"
+        @I_axes=Time,Temperature,Pressure,Q
         I: float[nTime,nTemperature,nPressure,100*512]
         Qx: float[nTime,nTemperature,nPressure,100*512]
         Qy: float[nTime,nTemperature,nPressure,100*512]
@@ -445,7 +445,7 @@ where :math:`Q` only depends on time.
     SASentry
       SASdata
         @Q_indices=1,3,4
-        @I_axes="Temperature,Time,Pressure,Q,Q"
+        @I_axes=Temperature,Time,Pressure,Q,Q
         I: float[nTemperature,nTime,nPressure,100,512]
         Qx: float[nTime,100,512]
         Qy: float[nTime,100,512]
@@ -555,8 +555,8 @@ the :math:`Q` values is different than for the other models.
   SASroot
     SASentry
       SASdata
-        @Q_indices="*,*"
-        @I_axes=" ??? "
+        @Q_indices=*,*
+        @I_axes=???
         I: float[100, 512]
         Qx: float[100]
         Qy: float[512]

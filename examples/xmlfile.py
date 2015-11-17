@@ -41,7 +41,6 @@ class ExampleFile():
         self.root.attrib['file_time'] = FILE_TIMESTAMP
         self.root.attrib['file_name'] = self.filename
         #self.root.attrib['Python_etree_version'] = etree.__version__
-        self.root.attrib['svn_id'] = SVN_ID
 
     def closeFile(self):
         '''write (or overwrite) the named XML file'''
@@ -73,12 +72,11 @@ class ExampleFile():
             raise "No parent SASentry node created yet!"
         self.sasdata = etree.SubElement(self.entry, 'SASdata')
         self.sasdata.attrib['name'] = name        # TODO: automatically choose this name
-        self.sasdata.attrib['I_axes'] = ii
-        items = self._list_to_text_list(qi)
-        self.sasdata.attrib['Q_indices'] = items
+        self.sasdata.attrib['I_axes'] = self._list_to_text_list(ii)
+        self.sasdata.attrib['Q_indices'] = self._list_to_text_list(qi)
         if otherattr != None:
             for key in otherattr.keys():
-                 self.sasdata.attrib[key] = otherattr[key]
+                 self.sasdata.attrib[key] = self._list_to_text_list(otherattr[key])
 
     def createDataSet(self, name, array, attributes=None):
         if self.sasdata is None:
@@ -103,6 +101,9 @@ class ExampleFile():
     def _list_to_text_list(self, data, delimiter = ','):
         # FIXME: fails when len(data) > 1000, array is truncated
         # TODO: return _all_ content of long np arrays (no " ... " in the middle)
-        return delimiter.join( str(data).strip('[]').split() )
+	try:
+             return delimiter.join(data) # string
+        except:
+             return delimiter.join( str(data).strip('[]').split() ) # numpy
 
 

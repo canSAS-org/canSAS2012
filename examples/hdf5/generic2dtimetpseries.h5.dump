@@ -1,36 +1,36 @@
-HDF5 "generic2dtimetpseries.h5" {
+HDF5 "hdf5/generic2dtimetpseries.h5" {
 GROUP "/" {
    ATTRIBUTE "file_name" {
       DATATYPE  H5T_STRING {
-            STRSIZE 24;
-            STRPAD H5T_STR_NULLPAD;
-            CSET H5T_CSET_ASCII;
-            CTYPE H5T_C_S1;
-         }
+         STRSIZE H5T_VARIABLE;
+         STRPAD H5T_STR_NULLTERM;
+         CSET H5T_CSET_ASCII;
+         CTYPE H5T_C_S1;
+      }
       DATASPACE  SCALAR
       DATA {
-      (0): "generic2dtimetpseries.h5"
+      (0): "hdf5/generic2dtimetpseries.h5"
       }
    }
    ATTRIBUTE "file_time" {
       DATATYPE  H5T_STRING {
-            STRSIZE 24;
-            STRPAD H5T_STR_NULLPAD;
-            CSET H5T_CSET_ASCII;
-            CTYPE H5T_C_S1;
-         }
+         STRSIZE H5T_VARIABLE;
+         STRPAD H5T_STR_NULLTERM;
+         CSET H5T_CSET_ASCII;
+         CTYPE H5T_C_S1;
+      }
       DATASPACE  SCALAR
       DATA {
-      (0): "2012-08-02T21:44:21-0600"
+      (0): "2015-11-16T15:58:25+0100"
       }
    }
    ATTRIBUTE "producer" {
       DATATYPE  H5T_STRING {
-            STRSIZE 6;
-            STRPAD H5T_STR_NULLPAD;
-            CSET H5T_CSET_ASCII;
-            CTYPE H5T_C_S1;
-         }
+         STRSIZE H5T_VARIABLE;
+         STRPAD H5T_STR_NULLTERM;
+         CSET H5T_CSET_ASCII;
+         CTYPE H5T_C_S1;
+      }
       DATASPACE  SCALAR
       DATA {
       (0): "canSAS"
@@ -39,11 +39,11 @@ GROUP "/" {
    GROUP "sasentry01" {
       ATTRIBUTE "NX_class" {
          DATATYPE  H5T_STRING {
-               STRSIZE 8;
-               STRPAD H5T_STR_NULLPAD;
-               CSET H5T_CSET_ASCII;
-               CTYPE H5T_C_S1;
-            }
+            STRSIZE H5T_VARIABLE;
+            STRPAD H5T_STR_NULLTERM;
+            CSET H5T_CSET_ASCII;
+            CTYPE H5T_C_S1;
+         }
          DATASPACE  SCALAR
          DATA {
          (0): "SASentry"
@@ -51,11 +51,11 @@ GROUP "/" {
       }
       ATTRIBUTE "version" {
          DATATYPE  H5T_STRING {
-               STRSIZE 3;
-               STRPAD H5T_STR_NULLPAD;
-               CSET H5T_CSET_ASCII;
-               CTYPE H5T_C_S1;
-            }
+            STRSIZE H5T_VARIABLE;
+            STRPAD H5T_STR_NULLTERM;
+            CSET H5T_CSET_ASCII;
+            CTYPE H5T_C_S1;
+         }
          DATASPACE  SCALAR
          DATA {
          (0): "1.0"
@@ -64,51 +64,54 @@ GROUP "/" {
       GROUP "sasdata01" {
          ATTRIBUTE "I_axes" {
             DATATYPE  H5T_STRING {
-                  STRSIZE 29;
-                  STRPAD H5T_STR_NULLPAD;
-                  CSET H5T_CSET_ASCII;
-                  CTYPE H5T_C_S1;
-               }
-            DATASPACE  SCALAR
+               STRSIZE 11;
+               STRPAD H5T_STR_NULLPAD;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }
+            DATASPACE  SIMPLE { ( 5 ) / ( 5 ) }
             DATA {
-            (0): "Temperature,Time,Pressure,Q,Q"
+            (0): "Temperature", "Time\000\000\000\000\000\000\000",
+            (2): "Pressure\000\000\000",
+            (3): "Q\000\000\000\000\000\000\000\000\000\000",
+            (4): "Q\000\000\000\000\000\000\000\000\000\000"
             }
          }
          ATTRIBUTE "NX_class" {
             DATATYPE  H5T_STRING {
-                  STRSIZE 7;
-                  STRPAD H5T_STR_NULLPAD;
-                  CSET H5T_CSET_ASCII;
-                  CTYPE H5T_C_S1;
-               }
+               STRSIZE H5T_VARIABLE;
+               STRPAD H5T_STR_NULLTERM;
+               CSET H5T_CSET_ASCII;
+               CTYPE H5T_C_S1;
+            }
             DATASPACE  SCALAR
             DATA {
             (0): "SASdata"
             }
          }
          ATTRIBUTE "Pressure_indices" {
-            DATATYPE  H5T_STD_I32LE
+            DATATYPE  H5T_STD_I64LE
             DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
             DATA {
             (0): 2
             }
          }
          ATTRIBUTE "Q_indices" {
-            DATATYPE  H5T_STD_I32LE
+            DATATYPE  H5T_STD_I64LE
             DATASPACE  SIMPLE { ( 3 ) / ( 3 ) }
             DATA {
             (0): 1, 3, 4
             }
          }
          ATTRIBUTE "Temperature_indices" {
-            DATATYPE  H5T_STD_I32LE
+            DATATYPE  H5T_STD_I64LE
             DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
             DATA {
             (0): 0
             }
          }
          ATTRIBUTE "Time_indices" {
-            DATATYPE  H5T_STD_I32LE
+            DATATYPE  H5T_STD_I64LE
             DATASPACE  SIMPLE { ( 1 ) / ( 1 ) }
             DATA {
             (0): 1
@@ -119,11 +122,11 @@ GROUP "/" {
             DATASPACE  SIMPLE { ( 3, 7, 2, 3, 3 ) / ( 3, 7, 2, 3, 3 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
-                     STRSIZE 4;
-                     STRPAD H5T_STR_NULLPAD;
-                     CSET H5T_CSET_ASCII;
-                     CTYPE H5T_C_S1;
-                  }
+                  STRSIZE H5T_VARIABLE;
+                  STRPAD H5T_STR_NULLTERM;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
                DATASPACE  SCALAR
                DATA {
                (0): "1/cm"
@@ -135,14 +138,14 @@ GROUP "/" {
             DATASPACE  SIMPLE { ( 2 ) / ( 2 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
-                     STRSIZE 2;
-                     STRPAD H5T_STR_NULLPAD;
-                     CSET H5T_CSET_ASCII;
-                     CTYPE H5T_C_S1;
-                  }
+                  STRSIZE H5T_VARIABLE;
+                  STRPAD H5T_STR_NULLTERM;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
                DATASPACE  SCALAR
                DATA {
-               (0): "ms"
+               (0): "MPa"
                }
             }
          }
@@ -151,11 +154,11 @@ GROUP "/" {
             DATASPACE  SIMPLE { ( 7, 3, 3 ) / ( 7, 3, 3 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
-                     STRSIZE 3;
-                     STRPAD H5T_STR_NULLPAD;
-                     CSET H5T_CSET_ASCII;
-                     CTYPE H5T_C_S1;
-                  }
+                  STRSIZE H5T_VARIABLE;
+                  STRPAD H5T_STR_NULLTERM;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
                DATASPACE  SCALAR
                DATA {
                (0): "1/A"
@@ -167,11 +170,11 @@ GROUP "/" {
             DATASPACE  SIMPLE { ( 7, 3, 3 ) / ( 7, 3, 3 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
-                     STRSIZE 3;
-                     STRPAD H5T_STR_NULLPAD;
-                     CSET H5T_CSET_ASCII;
-                     CTYPE H5T_C_S1;
-                  }
+                  STRSIZE H5T_VARIABLE;
+                  STRPAD H5T_STR_NULLTERM;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
                DATASPACE  SCALAR
                DATA {
                (0): "1/A"
@@ -183,11 +186,11 @@ GROUP "/" {
             DATASPACE  SIMPLE { ( 7, 3, 3 ) / ( 7, 3, 3 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
-                     STRSIZE 3;
-                     STRPAD H5T_STR_NULLPAD;
-                     CSET H5T_CSET_ASCII;
-                     CTYPE H5T_C_S1;
-                  }
+                  STRSIZE H5T_VARIABLE;
+                  STRPAD H5T_STR_NULLTERM;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
                DATASPACE  SCALAR
                DATA {
                (0): "1/A"
@@ -199,14 +202,14 @@ GROUP "/" {
             DATASPACE  SIMPLE { ( 3 ) / ( 3 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
-                     STRSIZE 2;
-                     STRPAD H5T_STR_NULLPAD;
-                     CSET H5T_CSET_ASCII;
-                     CTYPE H5T_C_S1;
-                  }
+                  STRSIZE H5T_VARIABLE;
+                  STRPAD H5T_STR_NULLTERM;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
                DATASPACE  SCALAR
                DATA {
-               (0): "ms"
+               (0): "T"
                }
             }
          }
@@ -215,11 +218,11 @@ GROUP "/" {
             DATASPACE  SIMPLE { ( 7 ) / ( 7 ) }
             ATTRIBUTE "units" {
                DATATYPE  H5T_STRING {
-                     STRSIZE 2;
-                     STRPAD H5T_STR_NULLPAD;
-                     CSET H5T_CSET_ASCII;
-                     CTYPE H5T_C_S1;
-                  }
+                  STRSIZE H5T_VARIABLE;
+                  STRPAD H5T_STR_NULLTERM;
+                  CSET H5T_CSET_ASCII;
+                  CTYPE H5T_C_S1;
+               }
                DATASPACE  SCALAR
                DATA {
                (0): "ms"

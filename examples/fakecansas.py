@@ -1,14 +1,15 @@
 #!/usr/bin/env python
 
 import numpy as np
-import h5py
 import os
 import sys
 import inspect
 import traceback
 import time
 
-from hdffile import ExampleFile
+# this is embarrassing, there is more at the end
+#from hdffile import ExampleFile
+from xmlfile import ExampleFile
 
 FILE_TIMESTAMP = time.strftime("%Y-%m-%dT%H:%M:%S")
 FILE_TIMESTAMP += '%+03d%02d' % (-time.timezone/60/60, abs(time.timezone/60) % 60)
@@ -132,9 +133,13 @@ if __name__ == "__main__":
         if (obj is not classType) and (classType in inspect.getmro(obj)):
             subclasses.append((obj, name))
     for file in subclasses:
-       filename = "hdf5/"+file[1]+".h5"
+       filename = "xml/"+file[1]+".xml"
        filename = filename.lower()
        file[0](filename).write()
-       os.system("h5dump -A %s > %s.dump" % (filename, filename))
+    #for file in subclasses:
+    #  filename = "hdf5/"+file[1]+".h5"
+    #  filename = filename.lower()
+    #  file[0](filename).write()
+    #  os.system("h5dump -A %s > %s.dump" % (filename, filename))
 
 

@@ -6,21 +6,11 @@ Generate synthetic data to demonstrate canSAS (2012) data structure in XML
 :see: http://www.smallangles.net/wgwiki/index.php/2012_Data_Discussion_Examples
 '''
 
-import inspect
-import string
-import time
-import sys
-import numpy as np
+import string, os
 from lxml import etree
 
 
-CANSAS_VERSION = '1.0'
-FILE_TIMESTAMP = time.strftime("%Y-%m-%dT%H:%M:%S")
-FILE_TIMESTAMP += '%+03d%02d' % (-time.timezone/60/60, abs(time.timezone/60) % 60)
-FILE_PRODUCER = "canSAS"
-
-
-class ExampleFile():
+class xmlfile():
     '''Support for creating and writing XML files (not reading)'''
     rootTag = "SASroot"
     root = None
@@ -28,8 +18,9 @@ class ExampleFile():
     entry = None
     sasdata = None
     
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, filename, **keywords):
+        self.filename = os.path.join("xml", filename + ".xml")
+        self.keywords = keywords
 
     def createFile(self):
         '''
@@ -37,10 +28,12 @@ class ExampleFile():
         Note the actual file creation happens in closeFile().
         '''
         self.root = etree.Element(self.rootTag)
-        self.root.attrib['producer'] = FILE_PRODUCER
-        self.root.attrib['file_time'] = FILE_TIMESTAMP
+        
         self.root.attrib['file_name'] = self.filename
-        #self.root.attrib['Python_etree_version'] = etree.__version__
+        self.root.attrib['Python_etree_version'] = etree.__version__
+        for keyw in ["file_time", "producer"]:
+            if keyw in self.keywords:
+                self.root.attrib[keyw] = self.keywords[keyw]
 
     def closeFile(self):
         '''write (or overwrite) the named XML file'''
@@ -57,8 +50,8 @@ class ExampleFile():
         if self.root is None:
             raise "No parent SASroot node created yet!"
         self.entry = etree.SubElement(self.root, 'SASentry')
-        self.entry.attrib['name'] = name        # TODO: automatically choose this name
-        self.entry.attrib['version'] = CANSAS_VERSION
+        self.entry.attrib['name'] = name
+        self.entry.attrib['version'] = "1.0"
         self.sasdata = None
 
     def createTitle(self, title):
@@ -100,10 +93,8 @@ class ExampleFile():
 
     def _list_to_text_list(self, data, delimiter = ','):
         # FIXME: fails when len(data) > 1000, array is truncated
-        # TODO: return _all_ content of long np arrays (no " ... " in the middle)
-	try:
-             return delimiter.join(data) # string
+        # TODO: return _all_ content of long np arrays (no " ... " in the middle
+        try:
+            return delimiter.join(data) # string
         except:
-             return delimiter.join( str(data).strip('[]').split() ) # numpy
-
-
+            return delimiter.join( str(data).strip('[]').split() ) # numpy

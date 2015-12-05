@@ -1,3 +1,0 @@
-#! /bin/sh
-
-rm *.h5 *.h5.dump

@@ -143,11 +143,12 @@ Terms
 						
 							@name="sasdata01"
 		
-			:@I_axes: Comma-separated list that describes the names 
+			:@I_axes: A string array that describes the names 
 						of the data objects that correspond to the 
-						indices of the ``I`` data object.  Such as::
+						indices of the ``I`` data object.  
+						Such as::
 						
-							@I_axes="Temperature,Time,Pressure,Q,Q"
+							@I_axes=Temperature,Time,Pressure,Q,Q
 			:@Q_indices: Array that describes which indices 
 						(of the :math:`I` data object) are used to 
 						reference the ``Q`` data object. The items in this array 
@@ -197,15 +198,15 @@ Storage container [#data_object]_ with numerical data for analysis or any kind o
 All data objects have attributes, some required, some optional.
 The name chosen for each data object must adhere to the `naming standard`_ described below.
 
-:@size: (required for numerical arrays) Number of items in this data object.  
+:@size: (only for implementations that do not support that natively) Number of items in this data object.  
 			If the array is multi-dimensional, then the length of each index
-			is reported individually, separated by commas.  Such as::
+			is reported individually.  Such as::
 			
 				size="100,512"
 			
 			describes a 2-D array of 100 rows and 512 columns.
-			Some implementations (such as HDF5 which uses *shape*) may provide 
-			native versions of the size.  Use the native capability, when present.
+			Some implementations like HDF5 provide native support for this 
+			(i.e. shape), in with case size should not be used.
 
 .. index:: !units
 	Unidata UDunits
@@ -257,9 +258,6 @@ The name of the subdirectory is given in an attribute of the data object.
 
 
 
-
-
-
 Contents:
 
 .. toctree::
@@ -279,14 +277,6 @@ Contents:
 .. _Unidata UDunits: http://www.unidata.ucar.edu/software/udunits/udunits-2-units.html
 .. [#UDunits]
     The :index:`UDunits` specification also includes instructions for derived units.
-
-
-
-
-
-
-
-
 
 
 

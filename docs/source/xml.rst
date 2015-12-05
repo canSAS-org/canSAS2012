@@ -13,11 +13,12 @@ Text: XML
 .. sidebar:: work in progress...
 
 	This document is under construction.
-	Many parts have yet to be written.
 
-It is expected that small-angle scattering data will be stored in 
-text files formatted as XML (http://www.w3schools.com/xml).  
-To store SAS data in binary  files, see the chapter titled 
+In some cases storing small volumnes of  small-angle scattering data
+in text files formatted as XML (http://www.w3schools.com/xml) may be 
+reasonable.
+For all general applications, see the chapter on the recommoneded 
+container format titled 
 :ref:`hdf5_implementation`.
 
 The basic plan here is to describe the implementation of the canSAS 

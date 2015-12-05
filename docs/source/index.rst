@@ -1,4 +1,3 @@
-.. $Id$
 
 ==================================================
 Description of the canSAS2012 data format
@@ -45,7 +44,6 @@ and welcome comments.
 .. sidebar:: work in progress...
 
 	This document is under construction.
-	Many parts have yet to be written.
 
 .. toctree::
    :maxdepth: 2

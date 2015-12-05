@@ -11,7 +11,6 @@ cd build/html
 mkdir examples
 cp -r ../../../examples/hdf5 examples
 cp -r ../../../examples/xml examples
-cp -r ../../../examples/contributions examples
 
 git init
 

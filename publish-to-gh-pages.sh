@@ -11,6 +11,7 @@ cd build/html
 mkdir examples
 cp -r ../../../examples/hdf5 examples
 cp -r ../../../examples/xml examples
+touch .nojekyll
 
 git init
 
@@ -20,7 +21,6 @@ git config user.email "tobias.richter@esss.se"
 
 # The first and only commit to this new Git repo contains all the
 # files present with the commit message "Deploy to GitHub Pages".
-chmod -R a+rx .
 git add .
 git commit -m "Deploy to GitHub Pages"
 

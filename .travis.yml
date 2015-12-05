@@ -1,11 +1,14 @@
 sudo: false
 
+language: python
+
 addons:
   apt:
     packages:
       - python-sphinx
       - python-h5py
       - python-lxml
+      - hdf5-tools
 
 script: sh ./publish-to-gh-pages.sh
 

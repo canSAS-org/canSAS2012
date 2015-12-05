@@ -1,0 +1,17 @@
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - python-sphinx
+      - python-h5py
+      - python-lxml
+
+script: sh ./publish-to-gh-pages.sh
+
+env:
+  global:
+  - GH_REF: github.com/canSAS-org/canSAS2012.git
+  - secure: "EpMaCiHaWaSQfhIWf2DDQOd7WPJ8dzhZjSUlQDzWZkatBlcmTKSpp50Jf0C5afe+gAefSL9Q+IumdHW8hharYmLVTVgwJNnN7Djxi1dpMXNjK2DgxR8skf/l8+KCcIIbAuWyk4GOonvS9OQaNIdStsXInY3IjfjmFnRw+HAR1lGLcUqfn5/4pbmrzlrx38+8FLYixrRj8XM1h1DVyCxtjlQJ9yG7YcFTT0EClxm+KgytMvcErIWjRLVg5uuLkXsdBrJcWsBRE0fYXu3A6Rms1QhJKwpeK+IXiDPg9QwvJlC5s6SeG2F3gNSDEkwYxJfwFQKNkmwJahsDTKwiNjAgVVOGKkOt8v33oGbpayMY4is/lZoLYwwegLvlK+suGWOke203voxRvmtYqAiYxhEZD8j/fzwCj8uNd+rPKK61ud+0WdGB+cF843jkry7IBGuJ+zOkV2BFlZfd6DvECOGPW6awEYoQR0Yo5rpA3+popLZBx4Az/SBqIADXP4+6V5DBYLQ/5YlW0NnL3xXRRJSs28hn7V3jdAhstiz3HchvCBLsJkPQtCpzcWpKk9P0nj527pJ8GRISk/v5aemwwTFCo/JC9VhjPBnDCbUFG+YY0JPZIPf95CFVd+usx+bU/pb430zTk8UwOUWOatWsmhItRE9/McegYHqd2IV5O3m9f/A="
+
+

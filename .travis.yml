@@ -1,7 +1,5 @@
 sudo: false
 
-language: python
-
 addons:
   apt:
     packages:

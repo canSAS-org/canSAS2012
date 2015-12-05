@@ -1,7 +1,8 @@
 canSAS2012
 ==========
 
-(see http://www.cansas.org/formats/canSAS2012/1.0/doc/index.html for more details)
+When all goes well this documentation should be accesible from 
+http://cansas-org.github.io/canSAS2012/
 
 The canSAS (Collective Action for Nomadic Small-Angle Scatterers) forum 
 met in Uppsala, Sweden in July 2012 [3] to discuss standardization of the 

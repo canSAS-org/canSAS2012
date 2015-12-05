@@ -77,7 +77,7 @@ in this section to satisfy the needs of data analysis and visualization software
       Title: string
       SASdata
         @Q_indices=0
-        @I_axes="Q"
+        @I_axes=Q
         I: float[]
         Q: float[]
         probe_type: string

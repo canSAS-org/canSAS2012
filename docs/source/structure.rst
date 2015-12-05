@@ -179,9 +179,9 @@ Name                  Type         Occurrence   Description
                                                 Example::
                                             
                                             		@name="sasdata01"
-@Q_indices            string       [1..1]       Describes which indices of `I` provide `Q`-related data.
-@I_axes               string       [1..1]       Tells the names of the datasets for `I` for each index position.
-@Mask_indices         string       [1..1]       Describes which indices of `I` provide `Mask`-related data.
+@Q_indices            string array [1..1]       Describes which indices of `I` provide `Q`-related data.
+@I_axes               string array [1..1]       Tells the names of the datasets for `I` for each index position.
+@Mask_indices         string array [1..1]       Describes which indices of `I` provide `Mask`-related data.
 Q                     float        [1..1] [#]_  :math:`|Q|`, as defined  in :ref:`Q scalar`.
 Qx                    float        [1..1]       :math:`\vec Q \cdot \hat x`, as defined  in :ref:`Q vector`.
 Qy                    float        [1..1]       :math:`\vec Q \cdot \hat y`, as defined  in :ref:`Q vector`.
@@ -220,8 +220,8 @@ This is an example of the **SASdata** group (subgroup information not shown)
   
   SASdata
     @name = "sasdata01"
-    @Q_indices = "0" 
-    @I_axes = "Q"
+    @Q_indices = 0 
+    @I_axes = Q
     Q: float[]
       @units = "1/A"
     I: float[]
@@ -242,7 +242,7 @@ used to reference `Q`. The items in this array use zero-based indexing.
 @I_axes
 ----------------
 
-Comma-separated list that describes the names of the data objects that 
+String array that describes the names of the data objects that 
 correspond to the indices of the I object. 
 
 @Mask_indices
@@ -275,7 +275,7 @@ case, the intensity was recorded on a two-dimensional grid of 100,512 size, incl
 uncertainties, and some of the grid must be masked to remove it from consideration 
 for analysis.  Thus, the intensity is a 5-dimensional array::
 
-	@I_axes="Temperature,Time,Pressure,Q,Q"
+	@I_axes=Temperature,Time,Pressure,Q,Q
 
 This specifies two types of information.  First, this specifies the index positions
 for the various related data.  Second, this specifies the names of the related datasets.
@@ -283,14 +283,14 @@ for the various related data.  Second, this specifies the names of the related d
 and 2-D :math:`Q` in the last two indices.
 In this particular case, since :math:`Q` is also a function of time, we specify::
 
-	@Q_indices = "1,3,4"
+	@Q_indices = 1,3,4
 
 where `1` indicates the position of the time index (second position) 
 and `3,4` indicate the positions of the 2-D grid indices.
 As a final permutation, the mask was not a function of time for some reason
 but only a function of :math:`Q`, so that::
 
-	@Mask_indices = "3,4"
+	@Mask_indices = 3,4
 
 Putting this all together, with accompanying datasets:
 
@@ -301,8 +301,8 @@ Putting this all together, with accompanying datasets:
   
   SASdata
     @name = "sasdata01"
-    @Q_indices = "1,3,4" 
-    @I_axes = "Temperature,Time,Pressure,Q,Q"
+    @Q_indices = 1,3,4 
+    @I_axes = Temperature,Time,Pressure,Q,Q
     @Mask_indices = "3,4" 
     Qx: float[nTime,100,512]
       @units = "1/A"

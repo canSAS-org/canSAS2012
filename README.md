@@ -1,9 +1,6 @@
 canSAS2012
 ==========
 
-When all goes well this documentation should be accesible from 
-http://cansas-org.github.io/canSAS2012/
-
 The canSAS (Collective Action for Nomadic Small-Angle Scatterers) forum 
 met in Uppsala, Sweden in July 2012 [3] to discuss standardization of the 
 storage of reduced small-angle scattering of any dimension to be considered 

@@ -1,0 +1,802 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Structure of the canSAS2012 data format &mdash; Documentation of the canSAS2012 standard data format</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Documentation of the canSAS2012 standard data format" href="index.html" />
+    <link rel="up" title="Contents" href="contents.html" />
+    <link rel="next" title="SASdata: Adding Additional Data" href="sasdata.html" />
+    <link rel="prev" title="Metadata of the canSAS2012 data format" href="metadata.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sasdata.html" title="SASdata: Adding Additional Data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="metadata.html" title="Metadata of the canSAS2012 data format"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" accesskey="U">Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cswikilogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Structure of the canSAS2012 data format</a><ul>
+<li><a class="reference internal" href="#sasroot">SASroot</a></li>
+<li><a class="reference internal" href="#sasentry">SASentry</a></li>
+<li><a class="reference internal" href="#sasdata">SASdata</a><ul>
+<li><a class="reference internal" href="#q-indices">&#64;Q_indices</a></li>
+<li><a class="reference internal" href="#i-axes">&#64;I_axes</a></li>
+<li><a class="reference internal" href="#mask-indices">&#64;Mask_indices</a></li>
+<li><a class="reference internal" href="#mask">Mask</a></li>
+<li><a class="reference internal" href="#example-with-multi-dimensional">Example with multi-dimensional <span class="math">\(I(Q)\)</span></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sassample">SASsample</a></li>
+<li><a class="reference internal" href="#sasinstrument">SASinstrument</a></li>
+<li><a class="reference internal" href="#sasnote">SASnote</a></li>
+<li><a class="reference internal" href="#sasprocess">SASprocess</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="metadata.html"
+                        title="previous chapter">Metadata of the canSAS2012 data format</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sasdata.html"
+                        title="next chapter">SASdata: Adding Additional Data</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/structure.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="structure-of-the-cansas2012-data-format">
+<span id="structure"></span><h1>Structure of the canSAS2012 data format<a class="headerlink" href="#structure-of-the-cansas2012-data-format" title="Permalink to this headline">¶</a></h1>
+<p>make some brief comments about this structure</p>
+<p>Note:</p>
+<ul id="name-note">
+<li><p class="first">Name attributes are allowed to be chosen by the data file writer.
+However, a <cite>name</cite> must adhere to the <a class="reference internal" href="framework.html#naming-standard"><em>naming standard</em></a>
+for <cite>name</cite> attributes <strong>and</strong> must be unique within the containing group.</p>
+<p>In some file containers, such as HDF5, the names of items in each group
+must be unique.  To write the canSAS standard in HDF5/NeXus, use the <cite>&#64;name</cite>
+attribute of a group as the group&#8217;s HDF5 name.  Write the type as
+the &#64;NX_class attribute and replace the &#8220;<cite>SAS</cite>&#8221; letters with &#8216;<cite>NX</cite>&#8221;
+in the group type.  More on this in the HDF5 implementation
+titled: <a class="reference internal" href="hdf5.html#hdf5-implementation"><em>Binary: HDF5</em></a>.  Here&#8217;s an example in HDF5:</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  @NX_class = &quot;NXroot&quot;
+  sasentry01
+    @NX_class = &quot;NXentry&quot;
+</pre></div>
+</td></tr></table></div>
+</li>
+<li><p class="first"><cite>&#64;</cite> prefix is a notation in this documentation that means the named item is an attribute.
+When used, do not actually use the <cite>&#64;</cite> symbol.</p>
+</li>
+<li><p class="first">Occurrence describes how many times a particular item is allowed to or must appear.
+We use a notation of <cite>[s..f]</cite>.  The <cite>s</cite> term indicates the minimum number of times
+the item is required to appear (where <cite>0</cite> means optional and <cite>1</cite> means required).
+The <cite>f</cite> term indicates the maximum number of times the item is allowed to appear
+(where <cite>inf</cite> means unlimited).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><p class="first last">notation</p>
+</th>
+<th class="head"><p class="first last">meaning</p>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first last"><cite>[0..1]</cite></p>
+</td>
+<td><p class="first last">the item is optional but may appear only once, if at all</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p class="first last"><cite>[1..1]</cite></p>
+</td>
+<td><p class="first last">the item is required and must appear only once</p>
+</td>
+</tr>
+<tr class="row-even"><td><p class="first last"><cite>[1..inf]</cite></p>
+</td>
+<td><p class="first last">the item is required and may appear one or more times</p>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">Within each group, the order in which each item appears is not important.</p>
+</li>
+</ul>
+<div class="section" id="sasroot">
+<span id="index-0"></span><span id="id1"></span><h2>SASroot<a class="headerlink" href="#sasroot" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>SASroot</strong> group is the beginning of the canSAS structure.  It is used to
+hold the data from one or more experiments, contained in one or more
+<a class="reference internal" href="#sasentry"><em>SASentry</em></a> groups.</p>
+<p>In an HDF5 file, it is not necessary to create this group but rather, one should
+use the root of the HDF file as the <strong>SASroot</strong> group.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="16%" />
+<col width="11%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Occurrence</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;file</td>
+<td>string</td>
+<td>[1..1]</td>
+<td>original data file name</td>
+</tr>
+<tr class="row-odd"><td>&#64;time</td>
+<td>string</td>
+<td>[1..1]</td>
+<td>date and time (ISO 8601 format) that this file was written</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sasentry"><em>SASentry</em></a></td>
+<td>group</td>
+<td>[1..inf]</td>
+<td>Each <strong>SASentry</strong> group contains the data (SAS and analysis)
+pertaining to measurements of a single sample.</td>
+</tr>
+</tbody>
+</table>
+<p>This is an example of the <strong>SASroot</strong> group (subgroup information not shown)</p>
+<div class="sidebar">
+<p class="first sidebar-title">TODO:</p>
+<p class="last">This example could be improved.
+Such as the filename and the name of the <cite>time</cite> attribute.</p>
+</div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  @file = &quot;/home/pi/data/cansas-demo.dat&quot;
+  @time = &quot;2012-12-28 11:58:47 CST&quot;
+  SASentry
+    @name = &quot;sasentry01&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="sasentry">
+<span id="index-1"></span><span id="id2"></span><h2>SASentry<a class="headerlink" href="#sasentry" title="Permalink to this headline">¶</a></h2>
+<p>A single SAS scan is reported in a <strong>SASentry</strong>. Include as many
+<strong>SASentry</strong> elements as desired.  They may contain related or
+unrelated data.  Other items may be added to a <strong>SASentry</strong> group
+but these may be ignored by analysis or visualization software.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Occurrence</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;name</td>
+<td>string</td>
+<td>[1..1]</td>
+<td><p class="first">Unique identifier of this entry group.
+See the <a class="reference internal" href="#name-note"><em>name note</em></a> above.
+Example:</p>
+<div class="last highlight-python"><pre>@name="sasentry01"</pre>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>&#64;version</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Specific version of the canSAS standard used to write
+this data.  This <strong>must</strong> be a text (not numerical)
+representation.  Example:</p>
+<div class="last highlight-python"><pre>@version="2.0"</pre>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Title</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Description of this entry.  Example:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">Title</span> <span class="o">=</span> <span class="s">&quot;Glassy Carbon C4 12keV&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sasdata"><em>SASdata</em></a></td>
+<td>group</td>
+<td>[1..inf]</td>
+<td><p class="first">The reduced <span class="math">\(I(Q)\)</span> SAS data.</p>
+<p class="last">Each <strong>SASdata</strong> group contains the reduced SAS data
+from measurements of a single sample.
+Use multiple <strong>SASdata</strong> elements to
+represent multiple <span class="math">\(I(Q)\)</span> measurements.</p>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sassample"><em>SASsample</em></a></td>
+<td>group</td>
+<td>[0..1]</td>
+<td>Information about this sample.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sasinstrument"><em>SASinstrument</em></a></td>
+<td>group</td>
+<td>[0..1]</td>
+<td>Information about the instrument that measured this data.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sasprocess"><em>SASprocess</em></a></td>
+<td>group</td>
+<td>[0..inf]</td>
+<td>Description of a processing or analysis step.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sasnote"><em>SASnote</em></a></td>
+<td>group</td>
+<td>[0..inf]</td>
+<td>Free form description to describe anything not already described.</td>
+</tr>
+</tbody>
+</table>
+<p>This is an example of the <strong>SASentry</strong> group (subgroup information not shown)</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre>SASentry
+  @name = &quot;sasentry01&quot;
+  @version = &quot;2.0&quot;
+  Title = &quot;Glassy Carbon C4 12keV&quot;
+  SASdata
+    @name = &quot;sasdata01&quot;
+  SASsample
+    @name = &quot;sample&quot;
+  SASinstrument
+    @name = &quot;sasinstrument01&quot;
+  SASprocess
+    @name = &quot;sasprocess01&quot;
+  SASnote
+    @name = &quot;sasnote01&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="sasdata">
+<span id="index-2"></span><span id="id3"></span><h2>SASdata<a class="headerlink" href="#sasdata" title="Permalink to this headline">¶</a></h2>
+<p>Contains the reduced data <span class="math">\(I(Q)\)</span> for analysis from a single SAS measurement.
+The table below shows the terms that are defined as part of the canSAS standard.
+Additional terms may be specified, as indicated in the section titled <a class="reference internal" href="sasdata.html#sasdata-discussion"><em>SASdata: Adding Additional Data</em></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For all numerical quantities, a <a class="reference internal" href="framework.html#units"><em>units</em></a> attribute is required.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+<col width="11%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Occurrence</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;name</td>
+<td>string</td>
+<td>[1..1]</td>
+<td><p class="first">Unique identifier of this data group.
+See the <a class="reference internal" href="#name-note"><em>name note</em></a> above.
+Example:</p>
+<div class="last highlight-python"><pre>@name="sasdata01"</pre>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>&#64;Q_indices</td>
+<td>int array</td>
+<td>[1..1]</td>
+<td>Describes which indices of <cite>I</cite> provide <cite>Q</cite>-related data.</td>
+</tr>
+<tr class="row-even"><td>&#64;I_axes</td>
+<td>string array</td>
+<td>[1..1]</td>
+<td>Tells the names of the datasets for <cite>I</cite> for each index position.</td>
+</tr>
+<tr class="row-odd"><td>&#64;Mask_indices</td>
+<td>int array</td>
+<td>[1..1]</td>
+<td>Describes which indices of <cite>I</cite> provide <cite>Mask</cite>-related data.</td>
+</tr>
+<tr class="row-even"><td>Q</td>
+<td>float</td>
+<td>[1..1] <a class="footnote-reference" href="#id6" id="id4">[1]</a></td>
+<td><span class="math">\(|Q|\)</span>, as defined  in <a class="reference internal" href="basics.html#q-scalar"><em>Q vector magnitude: </em></a>.</td>
+</tr>
+<tr class="row-odd"><td>Qx</td>
+<td>float</td>
+<td>[1..1]</td>
+<td><span class="math">\(\vec Q \cdot \hat x\)</span>, as defined  in <a class="reference internal" href="basics.html#q-vector"><em>Q vector: </em></a>.</td>
+</tr>
+<tr class="row-even"><td>Qy</td>
+<td>float</td>
+<td>[1..1]</td>
+<td><span class="math">\(\vec Q \cdot \hat y\)</span>, as defined  in <a class="reference internal" href="basics.html#q-vector"><em>Q vector: </em></a>.</td>
+</tr>
+<tr class="row-odd"><td>Qz</td>
+<td>float</td>
+<td>[1..1]</td>
+<td><span class="math">\(\vec Q \cdot \hat z\)</span>, as defined  in <a class="reference internal" href="basics.html#q-vector"><em>Q vector: </em></a>.</td>
+</tr>
+<tr class="row-even"><td>I</td>
+<td>float</td>
+<td>[1..1]</td>
+<td>The reduced SAS intensity data, as defined in <a class="reference internal" href="basics.html#i"><em>Definition of Intensity: </em></a>.</td>
+</tr>
+<tr class="row-odd"><td>Mask</td>
+<td>int</td>
+<td>[0..1]</td>
+<td>Array (same shape as <cite>I</cite>) that indicates which values of the
+<cite>I</cite> array should be used for analysis.  (1 = use, 0 = ignore)</td>
+</tr>
+<tr class="row-even"><td>probe_type</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Name of the radiation used.
+For maximum compatibility with NeXus, use one of these strings
+as defined in the NeXus <strong>NXsource</strong> definition for <cite>type</cite>
+or <cite>probe</cite>: <a class="footnote-reference" href="#id7" id="id5">[2]</a></p>
+<ul class="last simple">
+<li>Spallation Neutron Source</li>
+<li>Pulsed Reactor Neutron Source</li>
+<li>Reactor Neutron Source</li>
+<li>Synchrotron X-ray Source</li>
+<li>Pulsed Muon Source</li>
+<li>Rotating Anode X-ray</li>
+<li>Fixed Tube X-ray</li>
+<li>neutron</li>
+<li>x-ray</li>
+<li>muon</li>
+<li>electron</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>wavelength</td>
+<td>float</td>
+<td>[0..1]</td>
+<td>Wavelength of the incident radiation.  May be a scalar or an array.</td>
+</tr>
+<tr class="row-even"><td>transmission</td>
+<td>float</td>
+<td>[0..1]</td>
+<td>Sample transmission.  May be a scalar or an array.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sasnote"><em>SASnote</em></a></td>
+<td>group</td>
+<td>[0..inf]</td>
+<td>Free form description to describe anything not already described.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>Either <cite>Q</cite> must be present or <cite>Qx</cite>, <cite>Qy</cite>, and <cite>Qz</cite> must all be present.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td>NeXus <strong>NXsource</strong>: <a class="reference external" href="http://download.nexusformat.org/doc/html/classes/base_classes/NXsource.html">http://download.nexusformat.org/doc/html/classes/base_classes/NXsource.html</a></td></tr>
+</tbody>
+</table>
+<p>This is an example of the <strong>SASdata</strong> group (subgroup information not shown)</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre>SASdata
+  @name = &quot;sasdata01&quot;
+  @Q_indices = [0,]
+  @I_axes = [&quot;Q&quot;,]
+  Q: float[]
+    @units = &quot;1/A&quot;
+  I: float[]
+    @units = &quot;1/cm&quot;
+    @uncertainty = &quot;Idev&quot;
+  Idev: float[]
+    @units = &quot;1/cm&quot;
+  probe_type = &quot;x-ray&quot;
+  wavelength = 1.0401
+    @units = &quot;A&quot;
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="q-indices">
+<h3>&#64;Q_indices<a class="headerlink" href="#q-indices" title="Permalink to this headline">¶</a></h3>
+<p>Array attribute that describes which indices (of the <cite>I</cite> data object) are
+used to reference <cite>Q</cite>. The items in this array use zero-based indexing.</p>
+</div>
+<div class="section" id="i-axes">
+<h3>&#64;I_axes<a class="headerlink" href="#i-axes" title="Permalink to this headline">¶</a></h3>
+<p>String array that describes the names of the data objects that
+correspond to the indices of the I object.</p>
+</div>
+<div class="section" id="mask-indices">
+<h3>&#64;Mask_indices<a class="headerlink" href="#mask-indices" title="Permalink to this headline">¶</a></h3>
+<p>Array attribute that describes which indices (of the <cite>I</cite> data object) are
+used to reference <cite>Mask</cite>. The items in this array use zero-based indexing.</p>
+</div>
+<div class="section" id="mask">
+<h3>Mask<a class="headerlink" href="#mask" title="Permalink to this headline">¶</a></h3>
+<p>TODO: show how to use the mask and how NOT to use the mask</p>
+<p>The point of the mask is to indicate which intensity values should be considered
+for analysis (value = 1) and which should be ignored (value = 0).  To preserve
+the statistics, masking is a procedural operation, <strong>not</strong> a mathematical operation.</p>
+</div>
+<div class="section" id="example-with-multi-dimensional">
+<h3>Example with multi-dimensional <span class="math">\(I(Q)\)</span><a class="headerlink" href="#example-with-multi-dimensional" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Compare with these examples:</p>
+<ul class="last simple">
+<li><a class="reference internal" href="examples.html#example-2-d-images-with-varied-t-t-p"><em>2-D   images</em></a></li>
+<li><a class="reference internal" href="examples.html#example-2-d-masked-image"><em>2-D masked image</em></a></li>
+</ul>
+</div>
+<p>Consider an example case of <span class="math">\(I(T,t,P,Q(t))\)</span> where the intensity is a function of
+temperature, time, pressure, and <span class="math">\(Q\)</span>, respectively.  Also, in this hypothetical
+case, the intensity was recorded on a two-dimensional grid of 100,512 size, including intensity
+uncertainties, and some of the grid must be masked to remove it from consideration
+for analysis.  Thus, the intensity is a 5-dimensional array:</p>
+<div class="highlight-python"><pre>@I_axes=["Temperature","Time","Pressure","Q","Q"]</pre>
+</div>
+<p>This specifies two types of information.  First, this specifies the index positions
+for the various related data.  Second, this specifies the names of the related datasets.
+<cite>Temperature</cite> varies in the first index, <cite>Time in the second, `Pressure</cite> in the third,
+and 2-D <span class="math">\(Q\)</span> in the last two indices.
+In this particular case, since <span class="math">\(Q\)</span> is also a function of time, we specify:</p>
+<div class="highlight-python"><pre>@Q_indices = [1,3,4]</pre>
+</div>
+<p>where <cite>1</cite> indicates the position of the time index (second position)
+and <cite>3,4</cite> indicate the positions of the 2-D grid indices.
+As a final permutation, the mask was not a function of time for some reason
+but only a function of <span class="math">\(Q\)</span>, so that:</p>
+<div class="highlight-python"><pre>@Mask_indices = [3,4]</pre>
+</div>
+<p>Putting this all together, with accompanying datasets:</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">TODO: Check this example!</p>
+</div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre></div></td><td class="code"><div class="highlight"><pre>SASdata
+  @name = &quot;sasdata01&quot;
+  @Q_indices = [1,3,4]
+  @I_axes = [&quot;Temperature&quot;,&quot;Time&quot;,&quot;Pressure&quot;,&quot;Q&quot;,&quot;Q&quot;]
+  @Mask_indices = [3,4]
+  Qx: float[nTime,100,512]
+    @units = &quot;1/A&quot;
+  Qy: float[nTime,100,512]
+    @units = &quot;1/A&quot;
+  Qz: float[nTime,100,512]
+    @units = &quot;1/A&quot;
+  I: float[nTemperature,nTime,nPressure,100,512]
+    @units = &quot;1/cm&quot;
+    @uncertainty = &quot;Idev&quot;
+  Idev: float[nTemperature,nTime,nPressure,100,512]
+    @units = &quot;1/cm&quot;
+  Mask: int[100,512]
+  Temperature: float[nTemperature]
+    @units = &quot;K&quot;
+  Time: float[nTime]
+    @units = &quot;s&quot;
+  Pressure: float[nPressure]
+    @units = &quot;MPa&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="sassample">
+<span id="index-3"></span><span id="id8"></span><h2>SASsample<a class="headerlink" href="#sassample" title="Permalink to this headline">¶</a></h2>
+<p>Note that <cite>transmission</cite> has been moved to the <a class="reference internal" href="#sasdata"><em>SASdata</em></a> group.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="11%" />
+<col width="11%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Occurrence</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;name</td>
+<td>string</td>
+<td>[1..1]</td>
+<td><p class="first">Unique identifier of this sample group.
+See the <a class="reference internal" href="#name-note"><em>name note</em></a> above.
+Example:</p>
+<div class="last highlight-python"><pre>@name="sample"</pre>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Title</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Description of this sample.  Example:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">Title</span> <span class="o">=</span> <span class="s">&quot;Glassy Carbon C4 12keV&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>thickness</td>
+<td>float</td>
+<td>[0..1]</td>
+<td>Thickness of this sample.</td>
+</tr>
+<tr class="row-odd"><td>temperature</td>
+<td>float</td>
+<td>[0..1]</td>
+<td>Temperature of this sample.</td>
+</tr>
+<tr class="row-even"><td>position</td>
+<td>group</td>
+<td>[0..1]</td>
+<td>Translation position of this sample.</td>
+</tr>
+<tr class="row-odd"><td>orientation</td>
+<td>group</td>
+<td>[0..1]</td>
+<td>Rotational orientation of this sample.</td>
+</tr>
+<tr class="row-even"><td>details</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Any additional sample details:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">details</span> <span class="o">=</span> <span class="s">&quot;obtained from the XYZ Company, batch #123456.7890&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sasinstrument">
+<span id="index-4"></span><span id="id9"></span><h2>SASinstrument<a class="headerlink" href="#sasinstrument" title="Permalink to this headline">¶</a></h2>
+<p>Since the canSAS standard is intended to describe <em>reduced</em> small-angle scattering data,
+the need for an elaborate <strong>SASinstrument</strong> group is minimal.  Indeed, this group is here
+merely for compatibility with instrumental descriptions of the raw data and is not necessary
+for routine small-angle scattering data analysis.</p>
+</div>
+<div class="section" id="sasnote">
+<span id="index-5"></span><span id="id10"></span><h2>SASnote<a class="headerlink" href="#sasnote" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>SASnote</strong> group may contain any information.  The contents of <strong>SASnote</strong>
+are left unspecified by the canSAS standard.  It is used to specify additional
+information that has no specified place in the canSAS standard.</p>
+</div>
+<div class="section" id="sasprocess">
+<span id="index-6"></span><span id="id11"></span><h2>SASprocess<a class="headerlink" href="#sasprocess" title="Permalink to this headline">¶</a></h2>
+<p>Parameters used in processing or determined as a result of processing may
+be stored either in <strong>SASnote</strong> groups or in individual datasets.
+The names must adhere to the <a class="reference internal" href="framework.html#naming-standard"><em>naming standard</em></a>
+for <cite>name</cite> attributes <strong>and</strong> must be unique within the containing group.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="11%" />
+<col width="11%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Occurrence</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;name</td>
+<td>string</td>
+<td>[1..1]</td>
+<td><p class="first">Unique identifier of this process group.
+See the <a class="reference internal" href="#name-note"><em>name note</em></a> above.
+Example:</p>
+<div class="last highlight-python"><pre>@name="sasprocess01"</pre>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Title</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Description of this processing step.  Example:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">Title</span> <span class="o">=</span> <span class="s">&quot;Irena regularization analysis&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>date</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Optional date for this data processing or analysis step.
+The date is to be written in the ISO-8601 format.  <a class="footnote-reference" href="#iso8601" id="id12">[3]</a>
+Example:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">date</span> <span class="o">=</span> <span class="s">&quot;2012-12-28 11:59:41 CST&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>description</td>
+<td>string</td>
+<td>[0..1]</td>
+<td><p class="first">Optional description for this data processing or analysis step.
+Example:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">description</span> <span class="o">=</span> <span class="s">&quot;first try at analysis&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sasnote"><em>SASnote</em></a></td>
+<td>group</td>
+<td>[0..inf]</td>
+<td>Free form description to describe anything not already described.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="iso8601" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[3]</a></td><td>ISO-8601 is a format for the date which is easily machine-readable
+(either yyyy-mm-ddThh:mm:ss or yyyy-mm-dd hh:mm:ss).
+See: http://www.w3.org/TR/NOTE-datetime or
+http://en.wikipedia.org/wiki/ISO_8601 for more details.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sasdata.html" title="SASdata: Adding Additional Data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="metadata.html" title="Metadata of the canSAS2012 data format"
+             >previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" >Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2015, canSAS.
+      Last updated on Jun 04, 2017.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

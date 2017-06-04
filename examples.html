@@ -1,0 +1,849 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples of the canSAS2012 data format &mdash; Documentation of the canSAS2012 standard data format</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Documentation of the canSAS2012 standard data format" href="index.html" />
+    <link rel="up" title="Contents" href="contents.html" />
+    <link rel="next" title="Notation used to Represent the canSAS2012 data format" href="notation.html" />
+    <link rel="prev" title="Binary: HDF5" href="hdf5.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="notation.html" title="Notation used to Represent the canSAS2012 data format"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hdf5.html" title="Binary: HDF5"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" accesskey="U">Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cswikilogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Examples of the canSAS2012 data format</a><ul>
+<li><a class="reference internal" href="#models"><span class="math">\(I(Q)\)</span> models</a><ul>
+<li><a class="reference internal" href="#d">1-D <span class="math">\(I(Q)\)</span></a></li>
+<li><a class="reference internal" href="#d-image">2-D image</a></li>
+<li><a class="reference internal" href="#d-image-i-q-with-uncertainty">2-D (image)  <span class="math">\(I(|Q|)\pm\sigma(|Q|)\)</span></a></li>
+<li><a class="reference internal" href="#d-sas-was-images">2-D SAS/WAS images</a></li>
+<li><a class="reference internal" href="#d-masked-image">2-D masked image</a></li>
+<li><a class="reference internal" href="#d-generic">2-D generic <span class="math">\(I(Q)\)</span></a></li>
+<li><a class="reference internal" href="#d-sans-and-saxs">2-D SANS and SAXS</a></li>
+<li><a class="reference internal" href="#several-detectors">several detectors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models-with-time-dependence"><span class="math">\(I(t,Q)\)</span> models with time-dependence</a><ul>
+<li><a class="reference internal" href="#id3">1-D <span class="math">\(I(t,Q)\)</span></a></li>
+<li><a class="reference internal" href="#d-sas-data-in-a-time-series-i-t-q-t">1-D <span class="math">\(I(t,Q(t))\)</span></a></li>
+<li><a class="reference internal" href="#d-sas-data-in-a-time-series-i-t-q-t-idev-t-q-t">1-D <span class="math">\(I(t,Q(t))\pm\sigma(t,Q(t))\)</span></a></li>
+<li><a class="reference internal" href="#id6">2-D <span class="math">\(I(t,Q)\)</span></a></li>
+<li><a class="reference internal" href="#d-i-t-q-t">2-D <span class="math">\(I(t,Q(t))\)</span></a></li>
+<li><a class="reference internal" href="#d-time-dependent-masked-image">2-D <span class="math">\(I(t,Q(t))\)</span> masked image</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#models-with-several-varied-parameters">models with several varied parameters</a><ul>
+<li><a class="reference internal" href="#id9">2-D <span class="math">\(I(t,T,P,Q(t,T,P))\)</span></a></li>
+<li><a class="reference internal" href="#d-images">2-D  <span class="math">\(I(T,t,P,Q(t))\)</span> images</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#complicated-uncertainties">Complicated Uncertainties</a><ul>
+<li><a class="reference internal" href="#representing-uncertainty-components">Representing Uncertainty Components</a></li>
+<li><a class="reference internal" href="#representing-multiple-uncertainties-proposed">Representing Multiple Uncertainties (<em>proposed</em>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unhandled-cases">Unhandled Cases</a><ul>
+<li><a class="reference internal" href="#d-image-with-vectors">2-D image with <span class="math">\(Q_x\)</span> &amp; <span class="math">\(Q_y\)</span> vectors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hdf5.html"
+                        title="previous chapter">Binary: HDF5</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="notation.html"
+                        title="next chapter">Notation used to Represent the canSAS2012 data format</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/examples.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="examples-of-the-cansas2012-data-format">
+<span id="examples"></span><h1>Examples of the canSAS2012 data format<a class="headerlink" href="#examples-of-the-cansas2012-data-format" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">TODO:</p>
+<p class="last">Describe, in general, the examples.  Explain how they were created and
+what assumptions were involved.</p>
+</div>
+<p>It is useful to express the canSAS2012 data structure in terms of some common
+data models used for the analysis of small-angle scattering data.  These models
+describe some common data structures in use for current SAS data.  Later models
+describe various possibilities for data in which many parameters are varied.</p>
+<p>The models start first with <span class="math">\(I(Q)\)</span> data for 1-D and 2-D SAS, then show
+the effect of time-dependent data, and then add additional complexities.</p>
+<p>A few key example models have been identified, as shown next.</p>
+<p class="rubric">List of key Examples</p>
+<ul class="simple">
+<li><a class="reference internal" href="#minimum-recommended-1-d-i-q">minimum recommended 1-D I(Q)</a></li>
+<li><a class="reference internal" href="#generic-2-d-i-q">generic 2-D I(Q)</a></li>
+<li><a class="reference internal" href="#simple-2-d-image-i-q">simple 2-D (image) I(Q)</a></li>
+<li><a class="reference internal" href="#d-sas-data-in-a-time-series-i-t-q-t">1D SAS data in a time series I(t,Q(t))</a></li>
+</ul>
+<div class="section" id="models">
+<h2><span class="math">\(I(Q)\)</span> models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="d">
+<span id="minimum-recommended-1-d-i-q"></span><h3>1-D <span class="math">\(I(Q)\)</span><a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Compare...</p>
+<p class="last">This model could describe data stored in the the canSAS1d/1.0 format (with the addition of
+<em>uncertainty</em> data and some additional metadata).</p>
+</div>
+<p>Examples:
+<a class="reference download internal" href="_downloads/simpleexamplefile.h5"><tt class="xref download docutils literal"><span class="pre">HDF5</span></tt></a>
+<a class="reference download internal" href="_downloads/simpleexamplefile.xml"><tt class="xref download docutils literal"><span class="pre">XML</span></tt></a></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      I: float[100]
+      Q: float[100]
+</pre></div>
+</td></tr></table></div>
+<p>An XML implementation of this structure using the minimum recommended
+set of metadata (<span class="math">\(I(Q)\pm\sigma(Q)\)</span>, title, wavelength,
+radiation probe type, some text of historical value, and some basic
+sample information) is shown <a class="reference download internal" href="_downloads/example-1d.xml"><tt class="xref download docutils literal"><span class="pre">here</span></tt></a> using
+the 1-D (intensity standard) glassy carbon data.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For clarity, the other possible metadata has been left out
+from the remainder of the examples here.</p>
+</div>
+</div>
+<div class="section" id="d-image">
+<span id="simple-2-d-image-i-q"></span><h3>2-D image<a class="headerlink" href="#d-image" title="Permalink to this headline">¶</a></h3>
+<p>Examples:
+<a class="reference download internal" href="_downloads/simple2dcase.h5"><tt class="xref download docutils literal"><span class="pre">HDF5</span></tt></a>
+<a class="reference download internal" href="_downloads/simple2dcase.xml"><tt class="xref download docutils literal"><span class="pre">XML</span></tt></a></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=Q,Q
+      I: float[100, 512]
+      Qx: float[100, 512]
+      Qy: float[100, 512]
+      Qz: float[100, 512]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-image-i-q-with-uncertainty">
+<span id="id1"></span><h3>2-D (image)  <span class="math">\(I(|Q|)\pm\sigma(|Q|)\)</span><a class="headerlink" href="#d-image-i-q-with-uncertainty" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=Q,Q
+      I: float[300, 300]
+        @uncertainty=Idev
+      Q: float[300, 300]
+      Idev: float[300, 300]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-sas-was-images">
+<h3>2-D SAS/WAS images<a class="headerlink" href="#d-sas-was-images" title="Permalink to this headline">¶</a></h3>
+<p>Consider the multi-technique experiment that produces
+small-angle and wide-angle scattering data images.
+The reduced data results in images as well.
+Each image might be described separately (see the model for SAS using
+<a class="reference internal" href="#several-detectors">several detectors</a>  for an alternative).
+Here the SAS data image is 100 x 512 pixels.
+The WAS data (not covered by this canSAS standard) is 256 x 256 pixels.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @name=&quot;sasdata&quot;
+      @Q_indices=0,1
+      @I_axes=Q,Q
+      I: float[100, 512]
+      Qx: float[100, 512]
+      Qy: float[100, 512]
+      Qz: float[100, 512]
+    SASdata
+      @name=&quot;wasdata&quot;
+      @Q_indices=0,1
+      @I_axes=Q,Q
+      I: float[256, 256]
+      Qx: float[256, 256]
+      Qy: float[256, 256]
+      Qz: float[256, 256]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-masked-image">
+<span id="example-2-d-masked-image"></span><h3>2-D masked image<a class="headerlink" href="#d-masked-image" title="Permalink to this headline">¶</a></h3>
+<p>Examples:
+<a class="reference download internal" href="_downloads/simple2dmaskedcase.h5"><tt class="xref download docutils literal"><span class="pre">HDF5</span></tt></a>
+<a class="reference download internal" href="_downloads/simple2dmaskedcase.xml"><tt class="xref download docutils literal"><span class="pre">XML</span></tt></a></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=Q,Q
+      @Mask_indices=0,1
+      I: float[100, 512]
+      Qx: float[100, 512]
+      Qy: float[100, 512]
+      Qz: float[100, 512]
+      Mask: int[100, 512]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-generic">
+<span id="generic-2-d-i-q"></span><h3>2-D generic <span class="math">\(I(Q)\)</span><a class="headerlink" href="#d-generic" title="Permalink to this headline">¶</a></h3>
+<p>Could use this model, for example, to describe data from multiple detectors (by listing individual
+pixels from all detectors retained after any masking).  Or, could describe data from one detector
+of any geometry.  This is the most flexible.</p>
+<p>Examples:
+<a class="reference download internal" href="_downloads/generic2dcase.h5"><tt class="xref download docutils literal"><span class="pre">HDF5</span></tt></a>
+<a class="reference download internal" href="_downloads/generic2dcase.xml"><tt class="xref download docutils literal"><span class="pre">XML</span></tt></a></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      I: float[100*512]
+      Qx: float[100*512]
+      Qy: float[100*512]
+      Qz: float[100*512]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-sans-and-saxs">
+<h3>2-D SANS and SAXS<a class="headerlink" href="#d-sans-and-saxs" title="Permalink to this headline">¶</a></h3>
+<p>Consider the multi-technique experiment that produces
+small-angle neutron and X-ray scattering data.
+Here the SANS data image is 100 x 512 pixels and
+the SAXS data is 256 x 256 pixels.  (Normally, you will
+need more metadata for each probe, such as wavelength, to
+make a full analysis using both datasets.)</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @name=&quot;sans&quot;
+      @probe_type=&quot;neutron&quot;
+      @Q_indices=0
+      @I_axes=Q
+      I: float[100*512]
+      Qx: float[100*512]
+      Qy: float[100*512]
+      Qz: float[100*512]
+    SASdata
+      @name=&quot;saxs&quot;
+      @probe_type=&quot;xray&quot;
+      @Q_indices=0
+      @I_axes=Q
+      I: float[256*256]
+      Qx: float[256*256]
+      Qy: float[256*256]
+      Qz: float[256*256]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="several-detectors">
+<span id="id2"></span><h3>several detectors<a class="headerlink" href="#several-detectors" title="Permalink to this headline">¶</a></h3>
+<p>Here, the data are appended to a common <tt class="docutils literal"><span class="pre">I</span></tt> data object.
+This hypothetical case has reduced data derived from
+three detectors, <span class="math">\(I_a(Q)\)</span>, <span class="math">\(I_b(Q)\)</span>, and <span class="math">\(I_c(Q)\)</span>.
+Also, a certain number of pixels (<tt class="docutils literal"><span class="pre">nDiscardedPixels</span></tt>) have been discarded
+previously from the data for various reasons.</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Typical data might have fewer useful pixels due to various
+detector artifacts such as zingers, streaks, and dead spots, as well
+as an applied intensity mask.  There is no need to write such useless pixels
+to the data objects.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="19%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">intensity</th>
+<th class="head">detector</th>
+<th class="head">shape</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(I_a(Q)\)</span></td>
+<td>2-D</td>
+<td>100 x 512 pixels</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(I_b(Q)\)</span></td>
+<td>1-D</td>
+<td>2000 pixels</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(I_c(Q)\)</span></td>
+<td>2-D</td>
+<td>256 x 256 pixels</td>
+</tr>
+</tbody>
+</table>
+<p>Data from a SAXS/MAXS/WAXS instrument might be represented thus.</p>
+</div></blockquote>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      I: float[100*512  + 2000 + 256*256 - nDiscardedPixels]
+      Qx: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
+      Qy: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
+      Qz: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="models-with-time-dependence">
+<h2><span class="math">\(I(t,Q)\)</span> models with time-dependence<a class="headerlink" href="#models-with-time-dependence" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>1-D <span class="math">\(I(t,Q)\)</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Examples:
+<a class="reference download internal" href="_downloads/simple1dtimeseries.h5"><tt class="xref download docutils literal"><span class="pre">HDF5</span></tt></a>
+<a class="reference download internal" href="_downloads/simple1dtimeseries.xml"><tt class="xref download docutils literal"><span class="pre">XML</span></tt></a></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @I_axes=Time,Q
+      @Time_indices=0
+      @Q_indices=1
+      Time: float[nTime]
+      Q: float[100]
+      I: float[nTime,100]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-sas-data-in-a-time-series-i-t-q-t">
+<span id="id4"></span><h3>1-D <span class="math">\(I(t,Q(t))\)</span><a class="headerlink" href="#d-sas-data-in-a-time-series-i-t-q-t" title="Permalink to this headline">¶</a></h3>
+<p>This example is slightly more complex, showing data where <span class="math">\(Q\)</span> is also time-dependent.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @Time_indices=0
+      @I_axes=Time,Q
+      I: float[nTime,100]
+      Q: float[nTime,100]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-sas-data-in-a-time-series-i-t-q-t-idev-t-q-t">
+<span id="id5"></span><h3>1-D <span class="math">\(I(t,Q(t))\pm\sigma(t,Q(t))\)</span><a class="headerlink" href="#d-sas-data-in-a-time-series-i-t-q-t-idev-t-q-t" title="Permalink to this headline">¶</a></h3>
+<p>Now, provide the uncertainties (where <tt class="docutils literal"><span class="pre">Idev</span></tt> represents
+<span class="math">\(\sigma(t,Q(t))\)</span> ) of the intensities:</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @Time_indices=0
+      @I_axes=Time,Q
+      I: float[nTime,100]
+        @uncertainty=Idev
+      Idev: float[nTime,100]
+      Q: float[nTime,100]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="id6">
+<h3>2-D <span class="math">\(I(t,Q)\)</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Examples:
+<a class="reference download internal" href="_downloads/generic2dtimeseries.h5"><tt class="xref download docutils literal"><span class="pre">HDF5</span></tt></a>
+<a class="reference download internal" href="_downloads/generic2dtimeseries.xml"><tt class="xref download docutils literal"><span class="pre">XML</span></tt></a></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=1
+      @Time_indices=0
+      @I_axes=Time,Q
+      I: float[nTime,100*512]
+      Qx: float[100*512]
+      Qy: float[100*512]
+      Qz: float[100*512]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-i-t-q-t">
+<span id="id7"></span><h3>2-D <span class="math">\(I(t,Q(t))\)</span><a class="headerlink" href="#d-i-t-q-t" title="Permalink to this headline">¶</a></h3>
+<p>This example is slightly more complex, showing data where <span class="math">\(Q\)</span> is also time-dependent.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @Time_indices=0
+      @I_axes=Time,Q
+      I: float[nTime,100*512]
+      Qx: float[nTime,100*512]
+      Qy: float[nTime,100*512]
+      Qz: float[nTime,100*512]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-time-dependent-masked-image">
+<span id="id8"></span><h3>2-D <span class="math">\(I(t,Q(t))\)</span> masked image<a class="headerlink" href="#d-time-dependent-masked-image" title="Permalink to this headline">¶</a></h3>
+<p>This example explores a bit more complexity, adding a mask that is time-dependent.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1,2
+      @I_axes=Time,Q,Q
+      @Mask_indices=1,2
+      @MTime_indices=0
+      I: float[nTime,100,512]
+      Qx: float[nTime,100,512]
+      Qy: float[nTime,100,512]
+      Qz: float[nTime,100,512]
+      Time: float[nTime]
+      Mask: int[100,512]
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="models-with-several-varied-parameters">
+<h2>models with several varied parameters<a class="headerlink" href="#models-with-several-varied-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>2-D <span class="math">\(I(t,T,P,Q(t,T,P))\)</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Complex case of <span class="math">\(I(t,T,P,Q(t,T,P))\)</span>
+where all <span class="math">\(Q\)</span> values are different for each combination of time, temperature, and pressure.</p>
+<p>Examples:
+<a class="reference download internal" href="_downloads/generic2dtimetpseries.h5"><tt class="xref download docutils literal"><span class="pre">HDF5</span></tt></a>
+<a class="reference download internal" href="_downloads/generic2dtimetpseries.xml"><tt class="xref download docutils literal"><span class="pre">XML</span></tt></a></p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Time_indices=0
+      @Temperature_indices=1
+      @Pressure_indices=2
+      @Q_indices=0,1,2,3
+      @I_axes=Time,Temperature,Pressure,Q
+      I: float[nTime,nTemperature,nPressure,100*512]
+      Qx: float[nTime,nTemperature,nPressure,100*512]
+      Qy: float[nTime,nTemperature,nPressure,100*512]
+      Qz: float[nTime,nTemperature,nPressure,100*512]
+      Time: float[nTime]
+      Temperature: float[nTemperature]
+      Pressure: float[nPressure]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="d-images">
+<span id="example-2-d-images-with-varied-t-t-p"></span><h3>2-D  <span class="math">\(I(T,t,P,Q(t))\)</span> images<a class="headerlink" href="#d-images" title="Permalink to this headline">¶</a></h3>
+<p>Slightly less complex than previous, now <span class="math">\(I(T,t,P,Q(t))\)</span>
+where <span class="math">\(Q\)</span> only depends on time.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Temperature_indices=0
+      @Time_indices=1
+      @Pressure_indices=2
+      @Q_indices=1,3,4
+      @I_axes=Temperature,Time,Pressure,Q,Q
+      I: float[nTemperature,nTime,nPressure,100,512]
+      Qx: float[nTime,100,512]
+      Qy: float[nTime,100,512]
+      Qz: float[nTime,100,512]
+      Time: float[nTime]
+      Temperature: float[nTemperature]
+      Pressure: float[nPressure]
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="complicated-uncertainties">
+<h2>Complicated Uncertainties<a class="headerlink" href="#complicated-uncertainties" title="Permalink to this headline">¶</a></h2>
+<p>The uncertainties might be derived from several factors, or there may even be
+several uncertainties contributing.  In practical terms, these are special
+cases for analysis software.  In the interest of completeness, it is
+interesting to describe how they might be represented.</p>
+<div class="section" id="representing-uncertainty-components">
+<span id="id10"></span><h3>Representing Uncertainty Components<a class="headerlink" href="#representing-uncertainty-components" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to represent the components that contribute
+to the uncertainty by use of a subgroup.  Add a <em>&#64;components</em> attribute
+to the principal uncertainty, naming the subgroup that contains the
+contributing datasets.</p>
+<p>As with all uncertainties, each component should have the same <em>shape</em>
+(rank and dimensions) as its parent dataset.</p>
+<p>Note that a <em>&#64;basis</em> attribute indicates how this uncertainty was determined.
+The values are expected to be a short list, as yet unspecified.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      Q : float[nI]
+      I : float[nI]
+         @uncertainty=Idev
+      Idev : float[nI]
+         @components=I_uncertainties
+      I_uncertainties:
+         electronic : float[nI]
+            @basis=&quot;Johnson noise&quot;
+         counting_statistics: float[nI]
+            @basis=&quot;shot noise&quot;
+         secondary_standard: float[nI]
+            @basis=&quot;esd&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="representing-multiple-uncertainties-proposed">
+<span id="id11"></span><h3>Representing Multiple Uncertainties (<em>proposed</em>)<a class="headerlink" href="#representing-multiple-uncertainties-proposed" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is just a proposition.  It is based on the assumption
+that some analysis method might actually know how to handle this case.</p>
+</div>
+<p>If more than one uncertainty contributes to the intensity (and the method
+described above in <a class="reference internal" href="#representing-uncertainty-components"><em>Representing Uncertainty Components</em></a>
+is not appropriate), it is proposed to
+name more than one uncertainty dataset in the <em>&#64;uncertainty</em> attribute.
+The first member in this list would be the principal uncertainty.
+The <em>&#64;basis</em> attribute can be used to further describe each uncertainty.
+One example be:</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      Q : float[nI]
+      I : float[nI]
+        @uncertainty=Idev,Ierr
+      Idev : float[nI]
+        @basis=&quot;esd&quot;
+      Ierr : float[nI]
+        @basis=&quot;absolute intensity calibration&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="unhandled-cases">
+<h2>Unhandled Cases<a class="headerlink" href="#unhandled-cases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="d-image-with-vectors">
+<h3>2-D image with <span class="math">\(Q_x\)</span> &amp; <span class="math">\(Q_y\)</span> vectors<a class="headerlink" href="#d-image-with-vectors" title="Permalink to this headline">¶</a></h3>
+<p>This model is outside the scope of this format.  The method of addressing
+the <span class="math">\(Q\)</span> values is different than for the other models.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=*,*
+      @I_axes=???
+      I: float[100, 512]
+      Qx: float[100]
+      Qy: float[512]
+</pre></div>
+</td></tr></table></div>
+<p>Instead, use either the model titled:
+<a class="reference external" href="simple2-D(image)I(Q)">2-D image</a>
+or <a class="reference external" href="generic2-DI(Q)">2-D generic data</a> (preferred).</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="notation.html" title="Notation used to Represent the canSAS2012 data format"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hdf5.html" title="Binary: HDF5"
+             >previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" >Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2015, canSAS.
+      Last updated on Jun 04, 2017.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

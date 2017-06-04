@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Notation used to Represent the canSAS2012 data format &mdash; Documentation of the canSAS2012 standard data format</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Documentation of the canSAS2012 standard data format" href="index.html" />
+    <link rel="up" title="Contents" href="contents.html" />
+    <link rel="prev" title="Examples of the canSAS2012 data format" href="examples.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="examples.html" title="Examples of the canSAS2012 data format"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" accesskey="U">Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cswikilogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Notation used to Represent the canSAS2012 data format</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="examples.html"
+                        title="previous chapter">Examples of the canSAS2012 data format</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/notation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="notation-used-to-represent-the-cansas2012-data-format">
+<span id="notation"></span><h1>Notation used to Represent the canSAS2012 data format<a class="headerlink" href="#notation-used-to-represent-the-cansas2012-data-format" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">TODO:</p>
+<p class="last">Describe, the notation scheme.</p>
+</div>
+<p>The basic components of storage are:</p>
+<ul class="simple">
+<li>groups (or folders)</li>
+<li>fields (includes strings, scalers, and arrays, and HDF5 &#8220;datasets&#8221;)</li>
+<li>attributes</li>
+<li>links</li>
+</ul>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>More <a class="reference internal" href="examples.html#examples"><em>examples</em></a> are provided for representations of specific datasets.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=&quot;Q&quot;
+      I: float[100]
+      Q: float[100]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=&quot;Q,Q&quot;
+      I: float[100, 512]
+      Qx: float[100, 512]
+      Qy: float[100, 512]
+      Qx: float[100, 512]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=&quot;Q,Q&quot;
+      I: float[300, 300]
+        @uncertainty=Idev
+      Q: float[300, 300]
+      Idev: float[300, 300]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @name=&quot;sasdata&quot;
+      @Q_indices=0,1
+      @I_axes=&quot;Q,Q&quot;
+      I: float[100, 512]
+      Qx: float[100, 512]
+      Qy: float[100, 512]
+      Qz: float[100, 512]
+    SASdata
+      @name=&quot;wasdata&quot;
+      @Q_indices=0,1
+      @I_axes=&quot;Q,Q&quot;
+      I: float[256, 256]
+      Qx: float[256, 256]
+      Qy: float[256, 256]
+      Qz: float[256, 256]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=&quot;Q,Q&quot;
+      @Mask_indices=0,1
+      I: float[100, 512]
+      Qx: float[100, 512]
+      Qy: float[100, 512]
+      Qz: float[100, 512]
+      Mask: int[100, 512]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=&quot;Q&quot;
+      I: float[100*512]
+      Qx: float[100*512]
+      Qy: float[100*512]
+      Qz: float[100*512]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @name=&quot;sans&quot;
+      @Q_indices=0
+      @I_axes=&quot;Q&quot;
+      I: float[100*512]
+      Qx: float[100*512]
+      Qy: float[100*512]
+      Qz: float[100*512]
+    SASdata
+      @name=&quot;saxs&quot;
+      @Q_indices=0
+      @I_axes=&quot;Q&quot;
+      I: float[256*256]
+      Qx: float[256*256]
+      Qy: float[256*256]
+      Qz: float[256*256]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=&quot;Q&quot;
+      I: float[100*512  + 2000 + 256*256 - nDiscardedPixels]
+      Qx: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
+      Qy: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
+      Qz: float[100*512 + 2000 + 256*256 - nDiscardedPixels]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=1
+      @I_axes=&quot;Time,Q&quot;
+      I: float[nTime,100]
+      Q: float[100]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=&quot;Time,Q&quot;
+      I: float[nTime,100]
+      Q: float[nTime,100]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=&quot;Time,Q&quot;
+      I: float[nTime,100]
+        @uncertainty=Idev
+      Idev: float[nTime,100]
+      Q: float[nTime,100]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=1
+      @I_axes=&quot;Time,Q&quot;
+      I: float[nTime,100*512]
+      Qx: float[100*512]
+      Qy: float[100*512]
+      Qz: float[100*512]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1
+      @I_axes=&quot;Time,Q&quot;
+      I: float[nTime,100*512]
+      Qx: float[nTime,100*512]
+      Qy: float[nTime,100*512]
+      Qz: float[nTime,100*512]
+      Time: float[nTime]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1,2
+      @I_axes=&quot;Time,Q,Q&quot;
+      @Mask_indices=1,2
+      I: float[nTime,100,512]
+      Qx: float[nTime,100,512]
+      Qy: float[nTime,100,512]
+      Qz: float[nTime,100,512]
+      Time: float[nTime]
+      Mask: int[100,512]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0,1,2,3
+      @I_axes=&quot;Time,Temperature,Pressure,Q&quot;
+      I: float[nTime,nTemperature,nPressure,100*512]
+      Qx: float[nTime,nTemperature,nPressure,100*512]
+      Qy: float[nTime,nTemperature,nPressure,100*512]
+      Qz: float[nTime,nTemperature,nPressure,100*512]
+      Time: float[nTime]
+      T: float[nTemperature]
+      P: float[nPressure]
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=1,3,4
+      @I_axes=&quot;Temperature,Time,Pressure,Q,Q&quot;
+      I: float[nTemperature,nTime,nPressure,100,512]
+      Qx: float[nTime,100,512]
+      Qy: float[nTime,100,512]
+      Qz: float[nTime,100,512]
+      Time: float[nTime]
+      Temperature: float[nTemperature]
+      Pressure: float[nPressure]
+</pre></div>
+</td></tr></table></div>
+<p>It is possible to represent the components that contribute
+to the uncertainty by use of a subgroup.  Add a <em>&#64;components</em> attribute
+to the principal uncertainty, naming the subgroup that contains the
+contributing datasets.</p>
+<p>As with all uncertainties, each component should have the same <em>shape</em>
+(rank and dimensions) as its parent dataset.</p>
+<p>Note that a <em>&#64;basis</em> attribute indicates how this uncertainty was determined.
+The values are expected to be a short list, as yet unspecified.</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      Q : float[nI]
+      I : float[nI]
+         @uncertainty=Idev
+      Idev : float[nI]
+         @components=I_uncertainties
+      I_uncertainties:
+         electronic : float[nI]
+            @basis=&quot;Johnson noise&quot;
+         counting_statistics: float[nI]
+            @basis=&quot;shot noise&quot;
+         secondary_standard: float[nI]
+            @basis=&quot;esd&quot;
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is just a proposition.  It is based on the assumption
+that some analysis method might actually know how to handle this case.</p>
+</div>
+<p>If more than one uncertainty contributes to the intensity (and the method
+described above in <a class="reference internal" href="examples.html#representing-uncertainty-components"><em>Representing Uncertainty Components</em></a>
+is not appropriate), it is proposed to
+name more than one uncertainty dataset in the <em>&#64;uncertainty</em> attribute.
+The first member in this list would be the principal uncertainty.
+The <em>&#64;basis</em> attribute can be used to further describe each uncertainty.
+One example be:</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      Q : float[nI]
+      I : float[nI]
+        @uncertainty=Idev,Ierr
+      Idev : float[nI]
+        @basis=&quot;esd&quot;
+      Ierr : float[nI]
+        @basis=&quot;absolute intensity calibration&quot;
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="examples.html" title="Examples of the canSAS2012 data format"
+             >previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" >Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2015, canSAS.
+      Last updated on Jun 04, 2017.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Definitions &mdash; Documentation of the canSAS2012 standard data format</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Documentation of the canSAS2012 standard data format" href="index.html" />
+    <link rel="up" title="Contents" href="contents.html" />
+    <link rel="next" title="Overview of the canSAS2012 data format" href="framework.html" />
+    <link rel="prev" title="Requirements" href="requirements.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="framework.html" title="Overview of the canSAS2012 data format"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" accesskey="U">Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cswikilogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Definitions</a><ul>
+<li><a class="reference internal" href="#reduced-data">Reduced Data</a><ul>
+<li><a class="reference internal" href="#requirements-for-reduced-sas-data">Requirements for Reduced SAS Data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#definition-of">Definition of <span class="math">\(Q\)</span></a><ul>
+<li><a class="reference internal" href="#q-vector-magnitude">Q vector magnitude: <span class="math">\(|Q|=(4 \pi / \lambda) \sin(\theta)\)</span></a></li>
+<li><a class="reference internal" href="#q-vector">Q vector: <span class="math">\(\vec{Q}=\vec{k'}-\vec{k}\)</span></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#definition-of-intensity">Definition of Intensity: <span class="math">\(I\)</span></a></li>
+<li><a class="reference internal" href="#coordinate-axes">Coordinate Axes</a><ul>
+<li><a class="reference internal" href="#orientation">Orientation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="previous chapter">Requirements</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="framework.html"
+                        title="next chapter">Overview of the canSAS2012 data format</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/basics.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="definitions">
+<h1>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">work in progress...</p>
+<p class="last">This document is under construction.
+Many parts have yet to be written.</p>
+</div>
+<p>For the general case of small-angle scattering data, all that is required is
+to have measurements of reduced intensity <span class="math">\(I\)</span> as a function scattering
+vector, <span class="math">\(Q\)</span>.  Some techniques may require additional information, such
+as wavelength.</p>
+<div class="section" id="reduced-data">
+<span id="index-0"></span><span id="id1"></span><h2>Reduced Data<a class="headerlink" href="#reduced-data" title="Permalink to this headline">¶</a></h2>
+<p>What is <em>reduced data</em>?  Consider this figure of the scientific workflow
+presented at the
+<em>2006 Advanced Photon Source Workshop on Scientific Software</em>
+(<em>ANL-APS-TB-51</em>, Argonne National Laboratory):</p>
+<blockquote>
+<div><div class="figure">
+<img alt="scientific workflow" src="_images/2006-10-09-scientific-workflow.jpg" style="width: 95%;" />
+</div>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>Reduced data</em> is the data presented for analysis after all
+instrument-specific artifacts and corrections have been applied.</p>
+</div>
+<p>An <em>experiment</em> is constructed from a sequence of <em>measurements</em> by a scientific
+instrument.  Raw data from those measurements must be converted from the format
+received by components of the instrument (detectors, amplifiers, motors, encoders,
+thermocouples, etc.) into a form suitable for analysis particular
+to the scientific investigation.  Part of the conversion process involves the removal of
+artifacts and the correction of distortions of the signal by the measurement process
+(such as detector dead-time corrections or removal of dead pixels from an area
+detector image) and the combination of parameters describing the instrument configuration
+and even the possibility of an applied mask to remove parts of the measurement
+that contain no useful observations.
+The data that results after all these conversion steps have
+been applied is termed <strong>reduced data</strong>.</p>
+<p>In broad terms, the steps involved in the process of data reduction are
+particular to a specific scientific instrument as it existed at a specific
+time.  For many scientific instruments, such as those at large user facilities,
+it is not possible to generalize the process of data reduction and identify
+all the parameters necessary for data reduction in advance.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is, and will always be, the responsibility of the instrument team
+to provide the process of converting the data measurements into
+<strong>reduced data</strong>.</p>
+</div>
+<div class="section" id="requirements-for-reduced-sas-data">
+<h3>Requirements for Reduced SAS Data<a class="headerlink" href="#requirements-for-reduced-sas-data" title="Permalink to this headline">¶</a></h3>
+<p>The absolute minimum information required for the standard analysis
+of small-angle scattering measurements is intensity as a function of
+scattering vector, <span class="math">\(I(Q)\)</span>.</p>
+<dl class="docutils">
+<dt><a class="reference internal" href="#i"><em>Intensity</em></a></dt>
+<dd>is expressed in absolute units of cross-section
+or in units directly convertible by a scaling constant</dd>
+<dt><a class="reference internal" href="#q"><em>scattering vector</em></a></dt>
+<dd>is expressed as <a class="reference internal" href="#q-scalar"><em>scattering vector
+magnitude</em></a> (<span class="math">\(|Q|\)</span>)
+or <a class="reference internal" href="#q-vector"><em>scattering vector</em></a> (<span class="math">\(\vec{Q}\)</span>)</dd>
+</dl>
+<p>Some analyses may require additional information such as
+the estimation of experimental uncertainties, the
+wavelength and type of the radiation probe,
+or the instrumental resolution.  These should be provided,
+where possible.  Note that, for example, reduced SAS data does not
+<em>require</em> a number representing the distance from sample to detector as this
+common instrument-specific term has already been factored into the data
+reduction process.</p>
+</div>
+</div>
+<div class="section" id="definition-of">
+<span id="q"></span><span id="index-1"></span><h2>Definition of <span class="math">\(Q\)</span><a class="headerlink" href="#definition-of" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(Q\)</span> may be represented either as the magnitude of the scattering vector,
+<span class="math">\(|Q|\)</span> or by the three-dimensional scattering vector <span class="math">\(\vec{Q}\)</span>.
+When we write <span class="math">\(Q\)</span>, we may refer to either or both of <span class="math">\(|Q|\)</span>
+or <span class="math">\(\vec{Q}\)</span>,  depending on the context.</p>
+<div class="section" id="q-vector-magnitude">
+<span id="q-scalar"></span><h3>Q vector magnitude: <span class="math">\(|Q|=(4 \pi / \lambda) \sin(\theta)\)</span><a class="headerlink" href="#q-vector-magnitude" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>where <span class="math">\(\lambda\)</span> is the wavelength of the radiation,
+and <span class="math">\(2\theta\)</span> is the angle through which the detected radiation has been scattered.
+This is a one-dimensional reduction of the general case below.</p>
+<div class="figure" id="q-geometry">
+<img alt="Q geometry" src="_images/Q-geometry.jpg" style="height: 200px;" />
+<p class="caption">definition of <span class="math">\(|Q|\)</span> geometry for small-angle scattering</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="q-vector">
+<span id="id2"></span><h3>Q vector: <span class="math">\(\vec{Q}=\vec{k'}-\vec{k}\)</span><a class="headerlink" href="#q-vector" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>where <span class="math">\(\vec{k}\)</span> is the wave vector of the incident radiation
+and <span class="math">\(\vec{k'}\)</span> is the wave vector of the scattered radiation.
+Here, <span class="math">\(\vec{k}\)</span> is a vector of magnitude <span class="math">\(2\pi/\lambda\)</span>
+that points along the trajectory of the radiation.</p>
+<div class="figure" id="q-vector-geometry">
+<img alt="Q vector geometry" src="_images/q-vector.png" style="height: 400px;" />
+<p class="caption">definition of <span class="math">\(\vec{Q}\)</span> geometry for small-angle scattering <a class="footnote-reference" href="#id4" id="id3">[1]</a></p>
+</div>
+</div></blockquote>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>A hearty nod for this graphic is given to the guide:
+<strong>neutron scattering: A Primer</strong>,
+by Roger Pynn (LANSCE),
+published in the Summer 1990 edition of <em>Los Alamos Science</em>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="definition-of-intensity">
+<span id="i"></span><span id="index-2"></span><h2>Definition of Intensity: <span class="math">\(I\)</span><a class="headerlink" href="#definition-of-intensity" title="Permalink to this headline">¶</a></h2>
+<p>The intensity may be represented in one of these forms:</p>
+<dl class="docutils">
+<dt><strong>absolute units</strong>: <span class="math">\(d\Sigma/d\Omega(Q)\)</span></dt>
+<dd>differential cross-section
+per unit volume per unit solid angle (typical units: 1/cm/sr)</dd>
+<dt><strong>absolute units</strong>: <span class="math">\(d\sigma/d\Omega(Q)\)</span></dt>
+<dd>differential cross-section
+per unit atom per unit solid angle (typical units: cm^2)</dd>
+<dt><strong>arbitrary units</strong>: <span class="math">\(I(Q)\)</span></dt>
+<dd>usually a ratio of two detectors
+but units are meaningless (typical units: a.u.)</dd>
+</dl>
+<p>This presents a few problems
+for analysis software to sort out when reading the data.
+Fortunately, it is possible to analyze the <em>units</em> to determine which type of
+intensity is being reported and make choices at the time the file is read. But this is
+an area for consideration and possible improvement.</p>
+<p>One problem arises with software that automatically converts data into some canonical
+units used by that software. The software should not convert units between these different
+types of intensity indiscriminately.</p>
+<p id="index-3">A second problem is that when arbitrary units are used, then the set of possible
+analytical results is restricted.  With such units, no meaningful volume fraction
+or number density can be determined directly from <span class="math">\(I(Q)\)</span>.</p>
+<p>In some cases, it is possible to apply a factor to convert the arbitrary
+units to an absolute scale.  This should be considered as a possibility
+of the analysis process.</p>
+</div>
+<div class="section" id="coordinate-axes">
+<span id="index-4"></span><span id="id5"></span><h2>Coordinate Axes<a class="headerlink" href="#coordinate-axes" title="Permalink to this headline">¶</a></h2>
+<p>The canSAS standard assumes a right-hand rule coordinate system, <a class="footnote-reference" href="#id10" id="id6">[2]</a>, <a class="footnote-reference" href="#id11" id="id7">[3]</a>, <a class="footnote-reference" href="#id12" id="id8">[4]</a>
+consistent with a variety of software packages and data formats. <a class="footnote-reference" href="#id13" id="id9">[5]</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">z:</th><td class="field-body"><span class="math">\(z\)</span> is along the trajectory of the incident radiation
+(positive value in the direction towards the detector)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">x:</th><td class="field-body"><span class="math">\(x\)</span> is orthogonal to <span class="math">\(z\)</span> in the horizontal plane
+(positive values increase to the right when viewed
+towards the incoming radiation)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">y:</th><td class="field-body"><span class="math">\(y\)</span> is orthogonal to <span class="math">\(z\)</span> and <span class="math">\(x\)</span>
+in the vertical plane (positive values increase upwards)</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Coordinate_system#Cartesian_coordinate_system">http://en.wikipedia.org/wiki/Coordinate_system#Cartesian_coordinate_system</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Polar_coordinate_system">http://en.wikipedia.org/wiki/Polar_coordinate_system</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[4]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">http://en.wikipedia.org/wiki/Spherical_coordinate_system</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[5]</a></td><td><p class="first"><a class="reference external" href="http://www.nexusformat.org/Coordinate_Systems">http://www.nexusformat.org/Coordinate_Systems</a></p>
+<div class="last figure" id="coordinate-axes-geometry">
+<img alt="Coordinate Axes" src="_images/translation-orientation-geometry-2.png" style="height: 400px;" />
+<p class="caption">definition of the coordinate axes for translations and rotations</p>
+</div>
+</td></tr>
+</tbody>
+</table>
+<div class="section" id="orientation">
+<span id="index-5"></span><span id="id14"></span><h3>Orientation<a class="headerlink" href="#orientation" title="Permalink to this headline">¶</a></h3>
+<p>Orientation angles <a class="footnote-reference" href="#id17" id="id15">[6]</a> in the canSAS standard describe single-axis rotations.
+Rotations about multiple axes require more information.
+The rotations are described in terms of roll, pitch, and yaw <a class="footnote-reference" href="#id18" id="id16">[7]</a> :</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name"><strong>roll</strong>:</th><td class="field-body">a rotation about the <span class="math">\(z\)</span> axis,
+where zero rotation is along the positive <span class="math">\(x\)</span> axis</td>
+</tr>
+<tr class="field-even field"><th class="field-name"><strong>pitch</strong>:</th><td class="field-body">a rotation about the <span class="math">\(x\)</span> axis,
+where zero rotation is along the positive <span class="math">\(z\)</span> axis</td>
+</tr>
+<tr class="field-odd field"><th class="field-name"><strong>yaw</strong>:</th><td class="field-body">a rotation about the <span class="math">\(y\)</span> axis,
+where zero rotation is along the positive <span class="math">\(z\)</span> axis</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id15">[6]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Orientation_%28geometry%29">http://en.wikipedia.org/wiki/Orientation_%28geometry%29</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id18" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id16">[7]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Tait-Bryan_angles#Aircraft_attitudes">http://en.wikipedia.org/wiki/Tait-Bryan_angles#Aircraft_attitudes</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="framework.html" title="Overview of the canSAS2012 data format"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             >previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" >Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2015, canSAS.
+      Last updated on Jun 04, 2017.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

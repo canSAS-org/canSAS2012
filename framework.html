@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview of the canSAS2012 data format &mdash; Documentation of the canSAS2012 standard data format</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Documentation of the canSAS2012 standard data format" href="index.html" />
+    <link rel="up" title="Contents" href="contents.html" />
+    <link rel="next" title="Metadata of the canSAS2012 data format" href="metadata.html" />
+    <link rel="prev" title="Definitions" href="basics.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="metadata.html" title="Metadata of the canSAS2012 data format"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="basics.html" title="Definitions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" accesskey="U">Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cswikilogo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Overview of the canSAS2012 data format</a><ul>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#description">Description</a><ul>
+<li><a class="reference internal" href="#absolute-minimum-requirement-for-analysis-of-sas-data">Absolute minimum requirement for analysis of SAS data</a></li>
+<li><a class="reference internal" href="#minimum-content-recommended-for-reduced-sas-data">Minimum content recommended for reduced SAS data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#terms">Terms</a><ul>
+<li><a class="reference internal" href="#data-objects">Data Objects</a></li>
+<li><a class="reference internal" href="#naming-standard">Naming Standard</a></li>
+<li><a class="reference internal" href="#supplementary-uncertainty-data">Supplementary Uncertainty Data</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="basics.html"
+                        title="previous chapter">Definitions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="metadata.html"
+                        title="next chapter">Metadata of the canSAS2012 data format</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/framework.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="overview-of-the-cansas2012-data-format">
+<span id="framework-overview"></span><h1>Overview of the canSAS2012 data format<a class="headerlink" href="#overview-of-the-cansas2012-data-format" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title">work in progress...</p>
+<p class="last">This document is under construction.
+Many parts have yet to be written.</p>
+</div>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<p>Describe the structure of data to be presented for small-angle scattering analysis.
+Make the structure sufficiently general that it may be used for analysis of any form
+of reduced SAS data.</p>
+<p>The hierarchical structure of the canSAS standard has been designed to be
+compatible with the NeXus data format.</p>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="absolute-minimum-requirement-for-analysis-of-sas-data">
+<h3>Absolute minimum requirement for analysis of SAS data<a class="headerlink" href="#absolute-minimum-requirement-for-analysis-of-sas-data" title="Permalink to this headline">¶</a></h3>
+<p>The <em>least</em> amount of information necessary for meaningful
+small-angle scattering analysis is the presentation of
+the <span class="math">\(I(Q)\)</span> SAS data.  In the canSAS standard,
+this data is presented within
+a <em>SASdata</em> group (holding the data from a single experiment),
+inside of <em>SASentry</em> group (holding the data from a single sample),
+inside of a <em>SASroot</em> group (holding one or more experiments).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommended to store more metadata than this absolute minimum standard shows.
+See the section <a class="reference internal" href="#minimum-recommended-content"><em>Minimum content recommended for reduced SAS data</em></a> for more details.</p>
+</div>
+<div class="figure">
+<img alt="_images/2012-minimum.png" src="_images/2012-minimum.png" />
+<p class="caption">Absolute minimum requirement for analysis of SAS data.</p>
+</div>
+<p>Alternatively, this may be shown using a more condensed <a class="reference internal" href="notation.html#notation"><em>notation</em></a>, as:</p>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    SASdata
+      @Q_indices=0
+      @I_axes=&quot;Q&quot;
+      I: float[]
+      Q: float[]
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="minimum-content-recommended-for-reduced-sas-data">
+<span id="minimum-recommended-content"></span><h3>Minimum content recommended for reduced SAS data<a class="headerlink" href="#minimum-content-recommended-for-reduced-sas-data" title="Permalink to this headline">¶</a></h3>
+<p>It is recommended that instruments provide at least the information described
+in this section to satisfy the needs of data analysis and visualization software.</p>
+<div class="figure">
+<img alt="_images/2012-recommended-minimum.png" src="_images/2012-recommended-minimum.png" />
+<p class="caption">Minimum content recommended for reduced SAS data.</p>
+</div>
+<div class="highlight-text"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre>SASroot
+  SASentry
+    Title: string
+    SASdata
+      @Q_indices=0
+      @I_axes=Q
+      I: float[]
+      Q: float[]
+      probe_type: string
+      wavelength: float (or possibly float[])
+      Idev: float[]
+      Qdev: float[]
+      SASnote
+        anything: string, float, float[], ...
+    SASsample
+      name: string
+</pre></div>
+</td></tr></table></div>
+<hr class="docutils" />
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">re-write from this point downward on this page</p>
+</div>
+</div>
+</div>
+<div class="section" id="terms">
+<h2>Terms<a class="headerlink" href="#terms" title="Permalink to this headline">¶</a></h2>
+<div class="sidebar" id="index-0">
+<p class="first sidebar-title">TODO!</p>
+<p class="last">break this up into tables for each group</p>
+</div>
+<dl class="docutils">
+<dt><strong>SASroot</strong>:</dt>
+<dd><p class="first">derived from original 1D format, attributes have changed</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">needs full write-up</p>
+</div>
+<dl class="last docutils" id="index-1">
+<dt><strong>SASentry</strong>:</dt>
+<dd><p class="first">derived from original 1D format, content and attributes have changed</p>
+<div class="admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">needs full write-up</p>
+</div>
+<p><em>SASentry</em> groups have several attributes:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">&#64;name:</th><td class="field-body"><p class="first">Text that describes this group.
+Must conform to the <cite>naming standard &lt;naming standard&gt;</cite>
+and must be unique within a <em>SASentry</em> group.  Such as:</p>
+<div class="highlight-python"><pre>@name="sasentry01"</pre>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">&#64;version:</th><td class="field-body"><p class="first">Describes the version of the canSAS standard used to write this data.
+This must be a text (not numerical) representation.  Such as:</p>
+<div class="last highlight-python"><pre>@version="1.0"</pre>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils" id="index-2">
+<dt><strong>SASdata</strong>:</dt>
+<dd><p class="first">different use from original 1D format, refers to a single
+reduced data set that can be represented thus (such as
+from one detector)</p>
+<p><em>SASdata</em> groups have several attributes:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">&#64;name:</th><td class="field-body"><p class="first">Text that describes this group.
+Must be unique within a SASentry group.  Such as:</p>
+<div class="highlight-python"><pre>@name="sasdata01"</pre>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">&#64;I_axes:</th><td class="field-body"><p class="first">A string array that describes the names
+of the data objects that correspond to the
+indices of the <tt class="docutils literal"><span class="pre">I</span></tt> data object.
+Such as:</p>
+<div class="highlight-python"><pre>@I_axes=Temperature,Time,Pressure,Q,Q</pre>
+</div>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">&#64;Q_indices:</th><td class="field-body"><p class="first">Array that describes which indices
+(of the <span class="math">\(I\)</span> data object) are used to
+reference the <tt class="docutils literal"><span class="pre">Q</span></tt> data object. The items in this array
+use zero-based indexing.  Such as:</p>
+<div class="highlight-python"><pre>@Q_indices=1,3,4</pre>
+</div>
+<p>which indicates that Q requires three indices
+from the <span class="math">\(I\)</span> data object: one for time and
+two for Q position.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">&#64;Mask_indices:</th><td class="field-body"><p class="first">Array that describes which indices
+(of the <span class="math">\(I\)</span> data object) are used to
+reference the <tt class="docutils literal"><span class="pre">Mask</span></tt> data object.  The items in this
+array use zero-based indexing.  Such as:</p>
+<div class="highlight-python"><pre>@Mask_indices=3,4</pre>
+</div>
+<p class="last">which indicates that Q requires two indices
+from the <span class="math">\(I\)</span> data object for Q position.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="last">To indicate the dependency relationships of other varied parameters,
+use attributes similar to <tt class="docutils literal"><span class="pre">&#64;Mask_indices</span></tt> (such as <tt class="docutils literal"><span class="pre">&#64;Temperature_indices</span></tt>
+or <tt class="docutils literal"><span class="pre">&#64;Pressure_indices</span></tt>).</p>
+</dd>
+<dt><strong>SASsample</strong>:</dt>
+<dd><p class="first">derived from original 1D format, content and attributes have changed</p>
+<div class="last admonition caution">
+<p class="first admonition-title">Caution</p>
+<p class="last">needs full write-up</p>
+</div>
+</dd>
+</dl>
+<dl class="last docutils" id="index-3">
+<dt><strong>Title</strong>:</dt>
+<dd><p class="first">(string) Title of this <em>SASentry</em>.
+Optional attribute:  <em>name={short-Run-identifier}</em>.
+Example:</p>
+<div class="last highlight-python"><pre>Glassy Carbon C4 12keV</pre>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="section" id="data-objects">
+<span id="index-4"></span><span id="id1"></span><h3>Data Objects<a class="headerlink" href="#data-objects" title="Permalink to this headline">¶</a></h3>
+<p>Storage container <a class="footnote-reference" href="#data-object" id="id2">[1]</a> with numerical data for analysis or any kind of metadata.
+All data objects have attributes, some required, some optional.
+The name chosen for each data object must adhere to the <a class="reference internal" href="#naming-standard">naming standard</a> described below.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">&#64;size:</th><td class="field-body"><p class="first">(only for implementations that do not support that natively) Number of items in this data object.
+If the array is multi-dimensional, then the length of each index
+is reported individually.  Such as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">size</span><span class="o">=</span><span class="s">&quot;100,512&quot;</span>
+</pre></div>
+</div>
+<p class="last">describes a 2-D array of 100 rows and 512 columns.
+Some implementations like HDF5 provide native support for this
+(i.e. shape), in with case size should not be used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" id="units" rules="none">
+<span id="index-5"></span><col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">&#64;units:</th><td class="field-body">(required for all numerical objects)
+Engineering units of this data object.
+Use the <a class="reference external" href="http://www.unidata.ucar.edu/software/udunits/udunits-2-units.html">Unidata UDunits</a> <a class="footnote-reference" href="#udunits" id="id3">[2]</a>
+specification as this is compatible with
+various community standards.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" id="index-6" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">&#64;uncertainty:</th><td class="field-body">(optional for numerical arrays)
+Name of the data object (in this <em>SASdata</em> group) that
+provides the uncertainty to be used for data analysis.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="naming-standard">
+<span id="id4"></span><h3>Naming Standard<a class="headerlink" href="#naming-standard" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>names</strong> for data objects should follow a standard
+convention that starts with a letter (upper or lower case) and
+then a sequence composed of letters, numbers, and/or &#8220;_&#8221;.
+The length of the name is limited
+to no more than 63 characters (imposed by the HDF5 rule for names).</p>
+<blockquote>
+<div><p id="index-7">This standard convention for object names may be
+described by this regular expression:</p>
+<div class="highlight-python"><pre>[A-Za-z][\\w_]*</pre>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="supplementary-uncertainty-data">
+<span id="supplementary-uncertainty"></span><span id="index-8"></span><h3>Supplementary Uncertainty Data<a class="headerlink" href="#supplementary-uncertainty-data" title="Permalink to this headline">¶</a></h3>
+<p>A special case discussed at canSAS2012.</p>
+<p>Requires a named subdirectory below <em>SASdata</em> to contain the supplementary data.
+The name of the subdirectory is given in an attribute of the data object.</p>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="metadata.html">Metadata of the canSAS2012 data format</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="data-object" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Such as text, a scalar, or an array. HDF5 calls this a <em>dataset</em>,
+Not a folder or a group or an object that contain other objects.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="udunits" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>The <span class="target" id="index-9"></span>UDunits specification also includes instructions for derived units.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="metadata.html" title="Metadata of the canSAS2012 data format"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="basics.html" title="Definitions"
+             >previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" >Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2015, canSAS.
+      Last updated on Jun 04, 2017.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

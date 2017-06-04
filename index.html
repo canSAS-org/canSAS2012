@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Description of the canSAS2012 data format &mdash; Documentation of the canSAS2012 standard data format</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Documentation of the canSAS2012 standard data format" href="#" />
+    <link rel="next" title="Contents" href="contents.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="contents.html" title="Contents"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">canSAS2012</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/cswikilogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="contents.html"
+                        title="next chapter">Contents</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="description-of-the-cansas2012-data-format">
+<h1>Description of the canSAS2012 data format<a class="headerlink" href="#description-of-the-cansas2012-data-format" title="Permalink to this headline">¶</a></h1>
+<p>Computing power has increased to the point where it is now possible to consider
+routinely analysing multi-dimensional small angle scattering data. This is of
+particular value when considering non-azimuthally symmetric data from ordered
+systems and for the grazing incidence SAS experiments.</p>
+<p>One of the first aims of the canSAS <a class="footnote-reference" href="#id5" id="id1">[1]</a> (Collective Action for Nomadic Small-Angle
+Scatterers) forum of users and facility staff was to discuss better sharing of
+SAS data analysis software. One means of doing so is through common data formats
+to allow the easy use of different analysis software packages. Having developed
+an XML based standard for one-dimensional reduced small-angle scattering data, <a class="footnote-reference" href="#id6" id="id2">[2]</a>
+which is in use at multiple facilities, we now present a framework for storage of
+reduced multi-dimensional data. This not only includes the common concept of
+storing image data from the detector in 2 dimensions but also adding dimensions
+for parameters that were varied during the experiment (pressure, concentration,
+temperature, etc.). This is done in a way so the analysis program can take this
+into account.</p>
+<p>The targeted reduced data should be free from any correctable instrumental
+effects. We identified the absolute minimum required data objects for analysis,
+a standard recommended set and a dictionary of optional terms for various
+types of experiments. The devised hierarchical storage structure is in principle
+agnostic to the container format. With data of rank 2 and higher we recommend
+HDF5 as an efficient container and that is what the reference examples are
+provided for.</p>
+<p>The format is still in the consultation and evaluation phase.
+We present the details of the data format and some examples of usage
+and welcome comments.</p>
+<blockquote>
+<div><p>The canSAS (Collective Action for Nomadic Small-Angle Scatterers) forum
+met in Uppsala, Sweden in July 2012 <a class="footnote-reference" href="#id7" id="id3">[3]</a> to discuss standardization of the
+storage of reduced small-angle scattering of any dimension to be considered
+for analysis. <a class="footnote-reference" href="#id8" id="id4">[4]</a></p>
+<p>This document describes the current specification as an
+outcome of that meeting.</p>
+</div></blockquote>
+<div class="sidebar">
+<p class="first sidebar-title">work in progress...</p>
+<p class="last">This document is under construction.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contents.html">Contents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benefits.html">Scientific Benefits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motivation.html">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="framework.html">Overview of the canSAS2012 data format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html">Structure of the canSAS2012 data format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sasdata.html">SASdata: Adding Additional Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html">Implementation(s) of the canSAS2012 data format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples of the canSAS2012 data format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notation.html">Notation used to Represent the canSAS2012 data format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contents.html#about-this-documentation">About this documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.cansas.org">http://www.cansas.org</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://www.cansas.org/trac/export/265/1dwg/tags/v1.0/doc/cansas-1d-1_0-manual.pdf">http://www.cansas.org/trac/export/265/1dwg/tags/v1.0/doc/cansas-1d-1_0-manual.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://www.cansas.org/wgwiki/index.php/canSAS-2012">http://www.cansas.org/wgwiki/index.php/canSAS-2012</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://www.cansas.org/wgwiki/index.php/2012_Data_Discussion">http://www.cansas.org/wgwiki/index.php/2012_Data_Discussion</a></td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="contents.html" title="Contents"
+             >next</a> |</li>
+        <li><a href="#">canSAS2012</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2015, canSAS.
+      Last updated on Jun 04, 2017.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

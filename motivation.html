@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Motivation &mdash; Documentation of the canSAS2012 standard data format</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Documentation of the canSAS2012 standard data format" href="index.html" />
+    <link rel="up" title="Contents" href="contents.html" />
+    <link rel="next" title="Requirements" href="requirements.html" />
+    <link rel="prev" title="Scientific Benefits" href="benefits.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="benefits.html" title="Scientific Benefits"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" accesskey="U">Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cswikilogo.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="benefits.html"
+                        title="previous chapter">Scientific Benefits</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="next chapter">Requirements</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/motivation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="motivation">
+<span id="id1"></span><h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>One canSAS motive:<ul>
+<li>Provide better shared SAS data analysis software</li>
+</ul>
+</li>
+<li>One means of doing so is through common data formats such as<ul>
+<li>sasCIF, <em>J. Appl. Cryst.</em> (2000). <strong>33</strong>, 812-816</li>
+<li>cansas1d/1.0, <a class="reference external" href="http://www.cansas.org/formats/canSAS1d/1.1/doc/">http://www.cansas.org/formats/canSAS1d/1.1/doc/</a></li>
+<li>bio SAS draft requirements, <a class="reference external" href="http://journals.iucr.org/services/sas/">http://journals.iucr.org/services/sas/</a></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li>For 2-D (and higher dimensionality), the job is harder</li>
+<li>Often, 2-D analysis software tries to start with raw data</li>
+<li>Data reduction steps are particular to the instrument
+<strong>as it existed at one specific time</strong>.</li>
+</ul>
+<p>Thus, data reduction and data analysis are two different tasks.
+The data reduction is based on the the details of a specific instrument
+while the data analysis is based on the scientific principles to be evaluated.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is, and will always be, the responsibility of the
+instrument team to provide the process of converting
+the data measurements into <a class="reference internal" href="basics.html#reduced-data"><em>Reduced Data</em></a>.</p>
+</div>
+</div></blockquote>
+<p><a class="reference internal" href="basics.html#reduced-data"><em>Reduced data</em></a> is the data presented for analysis after
+all instrument-specific artifacts and corrections have been applied.
+By declaring our objective to store <em>reduced small-angle scattering data</em>,
+we establish a defined interface that clearly divides the roles.
+An instrument team must assemble the measured data, apply corrections
+and adjustments, and then generate the reduced data.
+Analysis code will expect to receive the reduced data on which to base its operations.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="benefits.html" title="Scientific Benefits"
+             >previous</a> |</li>
+        <li><a href="index.html">canSAS2012</a> &raquo;</li>
+          <li><a href="contents.html" >Contents</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012-2015, canSAS.
+      Last updated on Jun 04, 2017.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
